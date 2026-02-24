@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <title></title>
+    <link href="../static/css/theme.css" rel="stylesheet" />
+    <link href="../static/js/utils/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
+    <link href="../static/template/css/new.common.css" rel="stylesheet" />
+    <link href="../static/template/css/bodybg.css" rel="stylesheet" />
+    <link href="../static/template/css/new.dialog.css" rel="stylesheet" />
+    <link href="../static/template/css/new.my.css" rel="stylesheet" />
+    <!-- 自定义 -->
+    <link href="../static/css/mynav.css" rel="stylesheet" />
+  </head>
+  <body class="blue">
+    <div class="container" id="app" v-cloak>
+      <!-- 顶部导航 -->
+      <div id="toolbar"></div>
+      <div id="main" class="main section-setting">
+        <div class="clearfix main-inner">
+          <!-- 右侧内容区 -->
+          <div class="content">
+            <div class="clearfix content-inner">
+              <div class="content-main">
+                <div class="content-main-inner">
+                  <div class="pwrap setting-userinfo">
+                    <div class="phead">
+                      <div class="phead-inner">
+                        <div class="phead-inner">
+                          <h3 class="ptitle"><span>金币充值</span></h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pbody">
+
+                      <el-tabs type="border-card" v-model="active" @tab-click="changeTab">
+
+                        <el-tab-pane label="金币充值" name="1">
+                          <el-form ref="form" :model="form" :rules="rules" label-width="110px">
+                            <el-form-item label="温馨提示：">
+                              <span class="note">1次至少须充值<span style="color:red">1</span>个金币</span>
+                              <span class="surplus">(剩余金币: <img src="../static/template/images/coins.gif" />
+                                {{userInfo.coins||0}})</span>
+                            </el-form-item>
+                            <el-form-item label="金币数：" prop="coins">
+                              <el-input type="text" v-model="form.coins" maxlength="8" placeholder="请输入要充值的金币数"
+                                style="width: 20%;" @input="setNumber" />
+                            </el-form-item>
+                            <el-form-item label="需要支付：">
+                              <span style="color: #f60;font-weight: bold;font-size: 18px;">{{form.money}}</span> 元
+                            </el-form-item>
+                            <el-form-item label="付款方式：" prop="type">
+                              <!-- <img src="../static/template/images/alipay.png" style="width: 160px;height: 40px;" /> -->
+                              <!-- <img src="../static/template/images/wxpay.jpg" style="height: 40px;" title="微信支付" /> -->
+                              <el-radio-group v-model="form.type">
+                                <el-radio label="1">微信支付</el-radio>
+                                <!-- <el-radio label="2">对公转账</el-radio> -->
+                              </el-radio-group>
+                            </el-form-item>
+                            <el-form-item>
+                              <el-button type="primary" @click.native.prevent="paySubmit">确认充值</el-button>
+                            </el-form-item>
+                          </el-form>
+                          <div class="topup-note">
+                            <p>1.充值金额与金币的兑换比例为 1:2，也就是说，每充值1元即可兑换2个金币。</p>
+                            <p>2.若您已收到充值成功的提示，但金币尚未到账，大概率是网络延迟或系统繁忙所致，我们会在2个工作日内完成核对，并为您补充相应金币。</p>
+                            <p>3.充值前请务必仔细核对充值金额及目标账户信息，避免出现充值错误的情况。</p>
+                            <p>4.充值过程中，若遇到网页报错、加载缓慢等问题，建议您先查询银行或对应支付平台的交易记录，确认是否已扣款；再检查账户金币是否到账。未明确结果前，请勿反复刷新页面，以防产生重复扣费。</p>
+                            <p>5.如您在充值过程中有任何疑问，可联系客服电话：<strong>{{webName.tel}}</strong></p>
+                          </div>
+                        </el-tab-pane>
+
+                        <el-tab-pane label="充值记录" name="2">
+                          <el-table :data="pgData" border class="eltable" ref="table1" :class="pgTab[0]">
+                            <el-table-column label="序号" type="index" align="center" :index="(pgIndex-1)*pgSize+1"
+                              width="65">
+                            </el-table-column>
+                            <el-table-column prop="orderNo" label="订单编号"></el-table-column>
+                            <el-table-column label="充值金币数">
+                              <template slot-scope="scope">
+                                <span>{{ scope.row.coins }}个</span>
+                              </template>
+                            </el-table-column>
+                            <el-table-column label="支付状态" prop="statusStr">
+                              <!-- 1成功 0失败 2充值中 -->
+                              <template slot-scope="scope">
+                                <span v-if="scope.row.status==1">支付成功</span>
+                                <span v-else-if="scope.row.status==0">支付失败</span>
+                                <span v-else-if="scope.row.status==2">充值中</span>
+                                <span v-else-if="scope.row.status==3">充值取消</span>
+                              </template>
+                            </el-table-column>
+                            <el-table-column label="支付总额">
+                              <template slot-scope="scope">
+                                <span>{{ parseFloat((Number(scope.row.money) / 100).toFixed(2)) }}元</span>
+                              </template>
+                            </el-table-column>
+                            <el-table-column label="充值日期" width="160">
+                              <!-- endRechargeTime -->
+                              <template slot-scope="scope">{{ scope.row.startRechargeTime.substr(0,19) }}</template>
+                            </el-table-column>
+                          </el-table>
+                          <el-pagination background layout="total, prev, pager, next" :page-size="pgSize"
+                            :total="pgTotal" :current-page.sync="pgIndex" @pagination="getData"
+                            @current-change="pgChange" v-show="pgTotal>0" />
+                        </el-tab-pane>
+
+                        <el-tab-pane label="消费明细" name="3">
+                          <el-table :data="pgData2" border class="eltable" ref="table2" :class="pgTab[1]">
+                            <el-table-column label="序号" type="index" align="center" :index="(pgIndex2-1)*pgSize2+1"
+                              width="65">
+                            </el-table-column>
+                            <el-table-column label="扣除金币数" width="180">
+                              <template slot-scope="scope">
+                                <span style="color: red;">扣除金币 {{ scope.row.deductCoins }}</span>
+                              </template>
+                            </el-table-column>
+                            <el-table-column prop="from" label="操作">
+                              <template slot-scope="scope">
+                                  编号 {{scope.row.operationLog.dataId}} 的信息主题进行了 {{scope.row.operationLog.envDescribe}} 操作
+                              </template>
+                            </el-table-column>
+                            <el-table-column label="扣除日期" width="160">
+                              <template slot-scope="scope">{{ scope.row.deductionTime.substr(0,19) }}</template>
+                            </el-table-column>
+                          </el-table>
+                          <el-pagination background layout="total, prev, pager, next" :page-size="pgSize2"
+                            :total="pgTotal2" :current-page.sync="pgIndex2" @pagination="getData2"
+                            @current-change="pgChange2" v-show="pgTotal2>0" />
+                        </el-tab-pane>
+                      </el-tabs>
+
+                    </div>
+                    <div class="pfoot">
+                      <p><b>-</b></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 左侧菜单 -->
+          <div id="sidebar"></div>
+        </div>
+      </div>
+      <!-- 底部导航 -->
+      <div id="footer"></div>
+      <!-- 在线支付-弹窗 -->
+      <el-dialog :title="`请使用微信扫码支付`" :visible.sync="isAlert" width="400px" :close-on-click-modal="false" :show-close="false">
+        <h4 style="margin-bottom: 10px;">订单号：{{orderId}}</h4>
+        <div class="qrcode" id="qrcode"></div>
+        <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="hidePay">取消支付</el-button>
+        </span>
+      </el-dialog>
+      <!-- 对公转账-弹窗 -->
+      <el-dialog title="对公转账信息" :visible.sync="isAlert2" width="600px" :close-on-click-modal="false" :show-close="false">
+        <el-form ref="form2" :model="form2" label-width="110px" class="duigong">
+          <el-form-item label="提示：" v-if="form.type=='1'">
+            <span class="note">在线支付暂时不可用，请使用对公转账！充值完后，请联系电话或客服，会帮您线下金币充值！</span>
+          </el-form-item>
+          <el-form-item label="开户行：">
+            <span class="bkName">{{bankInfo.companyName||''}}</span>
+          </el-form-item>
+          <el-form-item label="银行卡号：">
+            <span class="bkCard">{{bankInfo.companyBranNum||''}}</span>
+          </el-form-item>
+          <el-form-item label="备注信息：">
+            <span class="bkMark">{{bankInfo.remark||''}}</span>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="hidePay2">关闭</el-button>
+        </span>
+      </el-dialog>
+    </div>
+    <script src="../static/js/utils/jquery.min.js"></script>
+    <script src="../static/js/utils/vue.min.js"></script>
+    <script src="../static/js/utils/element-ui/lib/index.js"></script>
+    <script src="../static/js/utils/layer/layer.js"></script>
+    <script src="../static/js/utils/qrcode.js"></script>
+    <script src="../static/js/utils/basepc.js"></script>
+    <script src="../static/js/utils/api.js"></script>
+    <script src="../static/js/web/mynav.js"></script>
+    <script src="../static/js/web/mycoins.js"></script>
+  </body>
+</html>

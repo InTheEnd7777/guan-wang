@@ -1,0 +1,11 @@
+/** 方舟 **/
+.fangzhou {
+  --color-main: #feb017;
+  --zpoint_qd: url(../images/zpoint_qd.png);
+}
+
+/** 半亩方塘 **/
+.banmu {
+  --color-main: #01A7E9;
+  --zpoint_qd: url(../images/zpoint_qd2.png);
+}

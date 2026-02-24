@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <title></title>
+    <link href="../static/css/theme.css" rel="stylesheet" />
+    <link href="../static/js/utils/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
+    <link href="../static/template/css/new.common.css" rel="stylesheet" />
+    <link href="../static/template/css/bodybg.css" rel="stylesheet" />
+    <link href="../static/template/css/new.dialog.css" rel="stylesheet" />
+    <link href="../static/template/css/new.my.css" rel="stylesheet" />
+    <!-- 自定义 -->
+    <link href="../static/css/mynav.css" rel="stylesheet" />
+    <style>
+      /* layer右边x号 */
+      .layui-layer-setwin{
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body class="blue">
+    <div class="container" id="app" v-cloak>
+      <!-- 顶部导航 -->
+      <div id="toolbar"></div>
+      <div id="main" class="main section-setting">
+        <div class="clearfix main-inner">
+          <!-- 右侧内容区 -->
+          <div class="content">
+            <div class="clearfix content-inner">
+              <div class="content-main">
+                <div class="content-main-inner">
+                  <div class="pwrap setting-userinfo">
+                    <div class="phead">
+                      <div class="phead-inner">
+                        <div class="phead-inner">
+                          <h3 class="ptitle">
+                            <span>我发布的分类主题</span>
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pbody">
+                      <el-button type="primary" size="mini" style="margin-bottom: 10px;"
+                        @click="addPost">发布分类主题</el-button>
+                      <el-tabs type="border-card" v-model="active" @tab-click="changeTab">
+                        <el-tab-pane label="我发布的主题" name="1"></el-tab-pane>
+                        <!-- <el-tab-pane label="审核中的主题" name="2"></el-tab-pane> -->
+                        <el-tab-pane label="推广中的主题" name="3"></el-tab-pane>
+                        <el-table :data="pgData" border class="eltable">
+                          <el-table-column label="序号" type="index" align="center" :index="(pgIndex-1)*pgSize+1"
+                            width="65">
+                          </el-table-column>
+                          <el-table-column label="编号" width="180" prop="id">
+                          </el-table-column>
+                          <el-table-column label="发布内容">
+                            <template slot-scope="scope">
+                              <div class="title pt-title">
+                                <a :href="'./information.html?id='+scope.row.id" target="_blank" class="pt-timg">
+                                  <img :src="scope.row.img[0]" v-if="scope.row.img">
+                                </a>
+                                <a :href="'./information.html?id='+scope.row.id" target="_blank"
+                                  class="pt-content">{{ scope.row.title }}</a>
+                              </div>
+                            </template>
+                          </el-table-column>
+                          <el-table-column label="发布日期" width="140">
+                            <template slot-scope="scope">{{ scope.row.createTime.substr(0,16) }}</template>
+                          </el-table-column>
+                          <el-table-column label="有效期" width="80">
+                            <template slot-scope="scope">
+                              {{scope.row.effectiveTimeStr}}
+                              <!-- <span v-if="scope.row.endDate==''">长期有效</span>
+                              <span v-else>{{ scope.row.endDate }}</span> -->
+                            </template>
+                          </el-table-column>
+                          <el-table-column label="浏览量" width="80">
+                            <template slot-scope="scope">
+                              {{scope.row.views||0}}
+                            </template>
+                          </el-table-column>
+
+                          <el-table-column label="操作" width="160">
+                            <template slot-scope="scope">
+                              <!-- <el-button type="text" size="mini" @click="refresh(scope.row.id)" 
+                              title="刷新后主题靠前显示，相当于新发一条。">刷新</el-button>
+                              <el-button type="text" size="mini" @click="setBold(scope.row.id)">加粗</el-button>
+                              <el-button type="text" size="mini" @click="setRed(scope.row.id)">套红</el-button> -->
+                              <!-- 审核中 -->
+                              <!-- <template v-if="status==2">
+                                <el-button type="text" size="mini" @click="postEdit(scope.row.id)">修改</el-button>
+                                <el-button type="text" size="mini" style="color:red"
+                                  @click="oneDel(scope.row.id)">删除</el-button>
+                              </template> -->
+                              <!-- 已通过v-else- -->
+                              <template v-if="status==1">
+                                <el-button type="text" size="mini" @click="topDel(scope.row.topId)" v-if="scope.row.releaseStatus==3">取消置顶</el-button>
+                                <el-button type="text" size="mini" @click="showAlert1(scope.row)" v-else>置顶</el-button>
+                                <el-button type="text" size="mini" @click="postEdit(scope.row.id)">修改</el-button>
+                                <el-button type="text" size="mini" style="color:red"
+                                  @click="oneDel(scope.row.id)">删除</el-button>
+                              </template>
+                              <!-- 推广中 -->
+                              <template v-else-if="status==3">
+                                <el-button type="text" size="mini" @click="topDel(scope.row.topId)" v-if="scope.row.releaseStatus==3">取消置顶</el-button>
+                                <el-button type="text" size="mini" @click="showAlert1(scope.row)" v-else>置顶</el-button>
+                                <el-button type="text" size="mini" @click="postEdit(scope.row.id)">修改</el-button>
+                              </template>
+                            </template>
+                          </el-table-column>
+                        </el-table>
+                        <el-pagination background layout="total, prev, pager, next" :page-size="pgSize" :total="pgTotal"
+                          :current-page.sync="pgIndex" @pagination="getData" @current-change="pgChange"
+                          v-show="pgTotal>0" />
+                      </el-tabs>
+
+                      <!-- 置顶-弹窗 -->
+                      <el-dialog title="置顶主题" :visible.sync="isAlert1" width="700px" class="zdAlert">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <div class="upgradetd">
+                                  <div class="introTitle"><span style="color:#F30;" class="t1">首页置顶</span><br>
+                                    <span class="t2">1天需要3金币</span>
+                                  </div>
+                                  <div class="t3">网站<span style="color:#FF3300">首页最吸睛的位置</span>为您展示主题，瞬间聚焦所有用户的目光！</div>
+                                </div>
+                              </td>
+                              <td>
+                                <div class="upgradetd" style="margin-left:5px">
+                                  <div class="introTitle"><span style="color:#369;" class="t1">大类置顶</span><br>
+                                    <span class="t2">1天需要2金币</span>
+                                  </div>
+                                  <div class="t3">展示于大类类目列表页的<span style="color:#FF3300">最顶端位置</span>，助力吸引更多关注目光！</div>
+                                </div>
+                              </td>
+                              <!-- <td>
+                                <div class="upgradetd" style="margin-left:5px">
+                                  <div class="introTitle"><span style="color:green;" class="t1">小类置顶</span><br>
+                                    <span class="t2">1天需要1金币</span>
+                                  </div>
+                                  <div class="t3">显示在小类类目列表页面的<font color="#FF3300">最顶部位置</font>，吸引更多关注！</div>
+                                </div>
+                              </td> -->
+                            </tr>
+                          </tbody>
+                        </table>
+
+                        <el-form ref="form" :model="form" :rules="rules" label-width="140px">
+                          <el-form-item label="推广发布的主题：">
+                            <a :href="'./information.html?id='+form.id" target="_blank">{{form.title}}</a>
+                          </el-form-item>
+                          <el-form-item label="置顶类型：" prop="type">
+                            <el-select v-model="form.type" placeholder="请选择级别" @change="changeType" style="width:30%">
+                              <el-option :label="item.label" :value="item.value" v-for="(item,i) in typeArr"
+                                :key="i"></el-option>
+                            </el-select>
+                          </el-form-item>
+                          <el-form-item label="置顶天数：" prop="date">
+                            <el-select v-model="form.date" placeholder="请选择天数" @change="changeType" style="width:30%"
+                              :disabled="!form.type">
+                              <el-option :label="item.label" :value="item.value" v-for="(item,i) in timeArr[form.type]"
+                                :key="i"></el-option>
+                            </el-select>
+                          </el-form-item>
+                          <div class="nr" style="margin: 0 0 15px;">
+                            <b>
+                              &nbsp;&nbsp;您当前金币数：<span class="red">{{userInfo.coins||0}}</span>，将扣除您金币数：<span
+                                class="red">{{form.coins}}</span> 金币
+                            </b>
+                          </div>
+                          <el-form-item label="">
+                            <el-button type="primary" @click.native.prevent="submit">提交置顶</el-button>
+                            <el-button type="primary" @click="isAlert1=false">取消</el-button>
+                          </el-form-item>
+                        </el-form>
+                      </el-dialog>
+
+                    </div>
+                    <div class="pfoot">
+                      <p><b>-</b></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 左侧菜单 -->
+          <div id="sidebar"></div>
+        </div>
+
+      </div>
+      <!-- 底部导航 -->
+      <div id="footer"></div>
+    </div>
+    <script src="../static/js/utils/jquery.min.js"></script>
+    <script src="../static/js/utils/vue.min.js"></script>
+    <script src="../static/js/utils/element-ui/lib/index.js"></script>
+    <script src="../static/js/utils/layer/layer.js"></script>
+    <script src="../static/js/utils/basepc.js"></script>
+    <script src="../static/js/utils/api.js"></script>
+    <script src="../static/js/web/mynav.js"></script>
+    <script src="../static/js/web/mypost.js"></script>
+  </body>
+</html>

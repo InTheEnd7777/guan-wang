@@ -1,0 +1,12 @@
+body.blue {
+  background: url(../images/global/bluebg.jpg) 0 14px repeat-x
+}
+
+body.orange,
+body.red {
+  background: url(../images/global/bluebg.jpg) 0 14px repeat-x
+}
+
+body.green {
+  background: url(../images/global/greenbg.gif) center 28px no-repeat
+}

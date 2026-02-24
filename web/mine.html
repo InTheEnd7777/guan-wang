@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <title></title>
+    <link href="../static/css/theme.css" rel="stylesheet" />
+    <link href="../static/js/utils/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
+    <link href="../static/template/css/new.common.css" rel="stylesheet" />
+    <link href="../static/template/css/bodybg.css" rel="stylesheet" />
+    <link href="../static/template/css/new.dialog.css" rel="stylesheet" />
+    <link href="../static/template/css/new.my.css" rel="stylesheet" />
+    <link href="../static/template/css/new.exchange.css" rel="stylesheet" />
+    <link href="../static/template/css/new.contribute.css" rel="stylesheet" />
+    <link href="../static/css/mycredit.css" rel="stylesheet" />
+    <!-- 自定义 -->
+    <link href="../static/css/mynav.css" rel="stylesheet" />
+  </head>
+  <body class="blue">
+    <div class="container" id="app" v-cloak>
+      <!-- 顶部导航 -->
+      <div id="toolbar"></div>
+      <div id="main" class="main section-setting">
+        <div class="clearfix main-inner">
+          <!-- 右侧内容区 -->
+          <div class="content">
+            <div class="clearfix content-inner">
+              <div class="content-main">
+                <div class="content-main-inner">
+                  <div class="pwrap accountinfo">
+                    <div class="phead">
+                      <div class="phead-inner">
+                        <div class="phead-inner" style="height: 20px;">
+                          <!-- <h3 class="ptitle">
+                            <span style="color:red" v-if="userInfo.level==0">[新手上路]</span>
+                            <span style="color:red" v-else-if="userInfo.level==1">[普通会员]</span>
+                            <span style="color:red" v-else-if="userInfo.level==2">[黄金会员]</span>
+                            &nbsp;&nbsp;
+                            <a style="font-size:14px" href="./mylevel.html">升级↑</a>
+                          </h3> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pbody">
+                      <div class="clearfix accountinfo-dock">
+                        <div class="account-avatar">
+                          <a href="./myavatar.html" title="更改头像">
+                            <img :src="userInfo.headPic||'../static/template/images/noavatar_small.gif'" alt="更改头像"
+                              width="48" height="48">
+                            <span class="avatar-change">更改头像</span>
+                          </a>
+                        </div>
+                        <div class="account-quicktools" style="margin-right: -400px;">
+                          <a class="account-qiandao" v-if="!isSign" @click="showSign">每日签到</a>
+                          <a class="account-qiandao-dis" v-else>每日签到</a>
+                          <!-- <a class="account-topup" href="./mycoins.html">金币充值</a>
+                          <span class="account-sum"><strong>{{userInfo.coins||0}}</strong></span> -->
+                        </div>
+                        <div class="account-uesrinfo">
+                          <span class="account-name"> [{{userInfo.nickName || userInfo.phone || '未填写'}}]
+                            <!-- <a target="_blank" style="font-size:12px; font-weight:100;"
+                              :href="'./myspace.html?user='+base64Encode(userInfo.phone)">查看我的网站</a> -->
+                          </span>
+                          <span class="account-id">我的ID: {{userInfo.id}}</span>
+                        </div>
+                        <div class="account-baseinfo">
+                          <!-- <span>Email地址: {{userInfo.email || '未填写'}}</span> -->
+                          <span>手机号码: {{userInfo.phone}}</span>
+                          <span>注册日期: {{userInfo.registryTime}}</span>
+                        </div>
+                        <div class="account-track">
+                          <span>最近访问日期: {{userInfo.lastLoginTime}}</span>
+                          <!-- <span>上次访问IP: {{userInfo.lastIp}}</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pfoot">
+                      <p><b>-</b></p>
+                    </div>
+                  </div>
+                  <div class="pwrap pwrap-simple">
+                    <div class="phead">
+                      <div class="phead-inner">
+                        <div class="phead-inner">
+                          <h3 class="ptitle"><span>主题统计</span></h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pbody">
+                      <ul class="clearfix statistics-list">
+                        <div class="clearfix counttable">
+                          <div class="cli">
+                            <span class="label">分类主题</span>
+                            <span class="value">
+                              <a href="./mypost.html">{{userInfo.releaseTopicCounts||0}}条</a>
+                            </span>
+                            <input value="发布主题»" type="button" class="postinfo" @click="checkCard">
+                          </div>
+                          <!-- <div class="cli">
+                            <span class="label">短消息</span>
+                            <span class="value">
+                              <a href="./mymsg.html">{{userInfo.msgTotal||0}}条</a>
+                            </span>
+                          </div> -->
+                        </div>
+                      </ul>
+                    </div>
+                    <div class="pfoot">
+                      <p><b>-</b></p>
+                    </div>
+                  </div>
+
+                  <div class="pwrap pwrap-simple exchange-finance">
+                    <div class="phead">
+                      <div class="phead-inner">
+                        <div class="phead-inner">
+                          <h3 class="ptitle"><span>余额信息</span></h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pbody">
+                      <ul class="financelist">
+                        <li>
+                          <span class="label">账户余额:</span>
+                          <span class="value"><strong>{{userInfo.coins || 0}}</strong> 金币</span>
+                           <!-- (相当于{{userInfo.coins/4}}元) -->
+                          <a class="topup" href="./mycoins.html">充值</a>
+                          <a class="withdraw" href="./mycoins.html?tab=3">消费明细</a>
+                        </li>
+                        <li>
+                          <span class="label">积分余额:</span>
+                          <span class="value"><strong>{{userInfo.points||0}}</strong> 分</span>
+                          <a class="detail" @click="showPoints">兑换金币</a>
+                          <!-- <a style="color:#ff3300;" @click="showAlert2">如何获得积分？</a> -->
+                        </li>
+                        <!-- <li class="noborder">
+                          <span class="label">信用等级:</span>
+                          <span class="value">
+                            <strong>
+                              <img src="../static/template/images/credit/1.gif" alt="信用值：0">
+                            </strong>
+                          </span>
+                          <a class="detail" @click="showAlert3">信用等级规则</a>
+                        </li> -->
+                      </ul>
+                    </div>
+                    <div class="pfoot">
+                      <p><b>-</b></p>
+                    </div>
+                  </div>
+                  <div class="pwrap pwrap-simple exchange-security">
+                    <div class="phead">
+                      <div class="phead-inner">
+                        <div class="phead-inner">
+                          <h3 class="ptitle"><span>认证状态</span></h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pbody">
+                      <ul class="securitylist">
+                        <li class="noborder">
+                          <span class="label">身份认证:</span>
+                          <span class="value">
+                            <img src="../static/template/images/person0.gif" title="未通过认证" v-if="!userInfo.status">
+                            <img src="../static/template/images/person1.gif" title="已通过认证" v-else>
+                          </span>
+                          <a href="./mycertify.html">{{userInfo.status?'已认证':'提交认证'}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="pfoot">
+                      <p><b>-</b></p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- 左侧菜单 -->
+          <div id="sidebar"></div>
+        </div>
+
+      </div>
+      <!-- 底部导航 -->
+      <div id="footer"></div>
+
+      <!-- 签到-弹窗 -->
+      <el-dialog title="每日签到" :visible.sync="isAlert0" width="400px">
+        <div id="center">
+          恭喜！签到成功，您的账户已成功增加 2 个积分！
+          <br />
+          <br /> 当前积分值：{{userInfo.points}}
+          <br />
+          <br />
+        </div>
+        <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="isAlert0=false">关闭</el-button>
+        </span>
+      </el-dialog>
+
+      <!-- 兑换金币-弹窗 -->
+      <el-dialog title="兑换金币" :visible.sync="isAlert1" width="400px">
+        <div class="nr" style="margin: 0 0 15px;">
+          <b>
+            您当前积分数 <span class="red">{{userInfo.points||0}}</span> 分，可兑换
+            <span class="red">{{Math.floor((userInfo.points||0)/8)}}</span> 金币
+          </b>
+        </div>
+        <el-form ref="form" :model="form" :rules="rules" label-width="110px">
+          <el-form-item label="提示：">
+            <span class="note"><span style="color:red">8</span>积分可兑换<span style="color:red">1</span>金币</span>
+          </el-form-item>
+          <el-form-item label="积分数：" prop="points">
+            <el-input type="text" v-model="form.points" maxlength="16" placeholder="请输入积分数" style="width: 90%;"
+              @input="setNumber" />
+          </el-form-item>
+          <el-form-item label="兑换金币数：">
+            <span style="color: #f60;font-weight: bold;font-size: 18px;">{{form.coins}}</span>
+          </el-form-item>
+          <el-form-item label="">
+            <el-button type="primary" @click.native.prevent="exchange">提交兑换</el-button>
+            <el-button type="primary" @click="isAlert1=false">取消</el-button>
+          </el-form-item>
+        </el-form>
+      </el-dialog>
+
+      <!-- 获得积分-弹窗 -->
+      <el-dialog title="如何获得积分" :visible.sync="isAlert2" width="400px">
+        <div class="cont">
+          <div class="cont_1">
+            <div class="nr" style="border-bottom:3px #ddd solid; color:#006acd; font-weight:bold">
+              会员积分策略相关说明
+            </div>
+            <div>
+              <table border="0" cellspacing="0" cellpadding="0" class="mymps">
+                <tbody>
+                  <tr bgcolor="#f5f8ff" style="font-weight:bold">
+                    <td>操作事件</td>
+                    <td>积分变化</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">注册成功</td>
+                    <td style="color:green">+10</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">登录成功</td>
+                    <td style="color:green">+2</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">发布分类主题</td>
+                    <td style="color:green">+2</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">营业执照认证</td>
+                    <td style="color:green">+10</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">身份证认证</td>
+                    <td style="color:green">+10</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">发布优惠券</td>
+                    <td style="color:green">+2</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">发布团购</td>
+                    <td style="color:green">+2</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">发布商品</td>
+                    <td style="color:green">+2</td>
+                  </tr>
+                  <tr>
+                    <td class="icon">注册推广</td>
+                    <td style="color:green">一个会员增加积分5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="isAlert2=false">关闭</el-button>
+        </span>
+      </el-dialog>
+
+      <!-- 信用等级-弹窗 -->
+      <el-dialog title="信用等级规则" :visible.sync="isAlert3" width="800px">
+        <div class="cont">
+          <div class="cont_1">
+            <div class="nr" style="border-bottom:3px #ddd solid">
+              <b>
+                您当前拥有金币<span class="red">{{userInfo.coins || 0}}</span>
+                <img src="../static/template/images/credit/mymps_icon_incomes.gif" />
+                ，信用值<span class="red">0</span>
+                <img src="../static/template/images/credit/1.gif" />
+              </b>
+            </div>
+            <b>
+              <div>
+                <table cellspacing="0" cellpadding="0" class="mymps">
+                  <tbody>
+                    <tr class="firstr">
+                      <td colspan="5" style="text-align:left!important">信用等级对照说明</td>
+                    </tr>
+                    <tr bgcolor="#f5f8ff" style="font-weight:bold">
+                      <td>信用等级</td>
+                      <td>信用度大于</td>
+                      <td>信用度小于</td>
+                      <td>等级图标</td>
+                    </tr>
+                    <tr class="current">
+                      <td class="icon">1</td>
+                      <td>10</td>
+                      <td>20</td>
+                      <td><img src="../static/template/images/credit/1.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">2</td>
+                      <td>20</td>
+                      <td>40</td>
+                      <td><img src="../static/template/images/credit/2.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">3</td>
+                      <td>40</td>
+                      <td>70</td>
+                      <td><img src="../static/template/images/credit/3.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">4</td>
+                      <td>70</td>
+                      <td>120</td>
+                      <td><img src="../static/template/images/credit/4.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">5</td>
+                      <td>120</td>
+                      <td>200</td>
+                      <td><img src="../static/template/images/credit/5.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">6</td>
+                      <td>200</td>
+                      <td>400</td>
+                      <td><img src="../static/template/images/credit/6.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">7</td>
+                      <td>400</td>
+                      <td>700</td>
+                      <td><img src="../static/template/images/credit/7.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">8</td>
+                      <td>700</td>
+                      <td>1200</td>
+                      <td><img src="../static/template/images/credit/8.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">9</td>
+                      <td>1200</td>
+                      <td>1800</td>
+                      <td><img src="../static/template/images/credit/9.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">10</td>
+                      <td>1800</td>
+                      <td>2600</td>
+                      <td><img src="../static/template/images/credit/10.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">11</td>
+                      <td>2600</td>
+                      <td>4000</td>
+                      <td><img src="../static/template/images/credit/11.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">12</td>
+                      <td>4000</td>
+                      <td>10000</td>
+                      <td><img src="../static/template/images/credit/12.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">13</td>
+                      <td>10000</td>
+                      <td>30000</td>
+                      <td><img src="../static/template/images/credit/13.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">14</td>
+                      <td>30000</td>
+                      <td>60000</td>
+                      <td><img src="../static/template/images/credit/14.gif" /></td>
+                    </tr>
+                    <tr>
+                      <td class="icon">15</td>
+                      <td>60000</td>
+                      <td></td>
+                      <td><img src="../static/template/images/credit/15.gif" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </b>
+          </div>
+        </div>
+        <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="isAlert3=false">关闭</el-button>
+        </span>
+      </el-dialog>
+    </div>
+    <script src="../static/js/utils/jquery.min.js"></script>
+    <script src="../static/js/utils/vue.min.js"></script>
+    <script src="../static/js/utils/element-ui/lib/index.js"></script>
+    <script src="../static/js/utils/layer/layer.js"></script>
+    <script src="../static/js/utils/basepc.js"></script>
+    <script src="../static/js/utils/api.js"></script>
+    <script src="../static/js/web/mynav.js"></script>
+    <script src="../static/js/web/mine.js"></script>
+  </body>
+</html>

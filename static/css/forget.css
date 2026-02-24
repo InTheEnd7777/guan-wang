@@ -1,0 +1,106 @@
+.body {
+  margin: 10px auto 0;
+  text-align: left;
+  width: 900px;
+  display: flex;
+}
+
+.body .reg {
+  width: 530px;
+  /* height: 378px; */
+  float: left;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+.body .reg img{
+  height: 100%;
+}
+
+/* ele自定义 */
+.login-form .title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0px auto 15px auto;
+  text-align: center;
+  color: #707070;
+}
+
+.login-form {
+  float: right;
+  width: 360px;
+  /* height: 378px; */
+  background: #ffffff;
+  padding: 10px 25px 0 25px;
+  box-sizing: border-box;
+  /* margin: 0 0 10px; */
+}
+
+.el-input {
+  height: 38px;
+}
+
+.input-icon {
+  height: 39px;
+  width: 14px;
+  margin-left: 2px;
+}
+
+.el-login-footer {
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.forget {
+  cursor: pointer;
+  font-size: 13px;
+  float: left;
+}
+
+.register {
+  cursor: pointer;
+  font-size: 13px;
+  float: right;
+}
+
+.lgbom {
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.agree .el-form-item__content{
+  line-height: 16px !important;
+}
+
+.agree .el-checkbox{
+  margin-bottom: 0 !important;
+}
+
+.aglink{
+  color: #ed1c24 !important;
+}
+
+.regbom{
+  margin-top: 25px;
+}
+
+/* 图形验证码 */
+.codeimg {
+  /* width: 80px; */
+  height: 38px;
+  cursor: pointer;
+}
+
+.codebox .el-input-group__append {
+  padding-left: 0;
+  padding-right: 0;
+}

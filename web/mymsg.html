@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <title></title>
+    <link href="../static/css/theme.css" rel="stylesheet" />
+    <link href="../static/js/utils/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
+    <link href="../static/template/css/new.common.css" rel="stylesheet" />
+    <link href="../static/template/css/bodybg.css" rel="stylesheet" />
+    <link href="../static/template/css/new.dialog.css" rel="stylesheet" />
+    <link href="../static/template/css/new.my.css" rel="stylesheet" />
+    <!-- 自定义 -->
+    <link href="../static/css/mynav.css" rel="stylesheet" />
+  </head>
+  <body class="blue">
+    <div class="container" id="app" v-cloak>
+      <!-- 顶部导航 -->
+      <div id="toolbar"></div>
+      <div id="main" class="main section-setting">
+        <div class="clearfix main-inner">
+          <!-- 右侧内容区 -->
+          <div class="content">
+            <div class="clearfix content-inner">
+              <div class="content-main">
+                <div class="content-main-inner">
+                  <div class="pwrap setting-userinfo">
+                    <div class="phead">
+                      <div class="phead-inner">
+                        <div class="phead-inner">
+                          <h3 class="ptitle"><span>短消息管理</span></h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pbody">
+
+                      <el-tabs type="border-card" v-model="active" @tab-click="changeTab">
+
+                        <el-tab-pane label="收件箱" name="1">
+                          <el-button type="primary" size="mini" @click="showDel" v-if="pgData.length">删除</el-button>
+                          <el-table :data="pgData" border class="eltable" ref="table1" @selection-change="selChange"
+                            :class="pgTab[0]">
+                            <el-table-column type="selection" width="40">
+                            </el-table-column>
+                            <el-table-column label="序号" type="index" align="center" :index="(pgIndex-1)*pgSize+1"
+                              width="65">
+                            </el-table-column>
+                            <el-table-column label="标题">
+                              <template slot-scope="scope">
+                                <span class="ele-title" @click="showAlert(scope.row)">{{ scope.row.title }}</span>
+                              </template>
+                            </el-table-column>
+                            <el-table-column prop="from" label="来自" width="120">
+                            </el-table-column>
+                            <el-table-column label="时间" width="160">
+                              <template slot-scope="scope">{{ scope.row.createTime.substr(0,19) }}</template>
+                            </el-table-column>
+                          </el-table>
+                          <el-pagination background layout="total, prev, pager, next" :page-size="pgSize"
+                            :total="pgTotal" :current-page.sync="pgIndex" @pagination="getData"
+                            @current-change="pgChange" v-show="pgTotal>0" />
+                        </el-tab-pane>
+
+                        <el-tab-pane label="发件箱" name="2">
+                          <el-button type="primary" size="mini" @click="showDel2" v-if="pgData2.length">删除</el-button>
+                          <el-table :data="pgData2" border class="eltable" ref="table2" @selection-change="selChange2"
+                            :class="pgTab[1]">
+                            <el-table-column type="selection" width="40">
+                            </el-table-column>
+                            <el-table-column label="序号" type="index" align="center" :index="(pgIndex2-1)*pgSize2+1"
+                              width="65">
+                            </el-table-column>
+                            <el-table-column label="标题">
+                              <template slot-scope="scope">
+                                <span class="ele-title" @click="showAlert2(scope.row)">{{ scope.row.title }}</span>
+                              </template>
+                            </el-table-column>
+                            <el-table-column prop="from" label="来自" width="120">
+                            </el-table-column>
+                            <el-table-column label="时间" width="160">
+                              <template slot-scope="scope">{{ scope.row.createTime.substr(0,19) }}</template>
+                            </el-table-column>
+                          </el-table>
+                          <el-pagination background layout="total, prev, pager, next" :page-size="pgSize2" :total="pgTotal2"
+                            :current-page.sync="pgIndex2" @pagination="getData2" @current-change="pgChange2"
+                            v-show="pgTotal2>0" />
+                        </el-tab-pane>
+
+                        <el-tab-pane label="发短消息" name="3">
+                          <el-form ref="form" :model="form" :rules="rules" label-width="110px">
+                            <el-form-item label="发送到" prop="phone">
+                              <el-input type="text" v-model="form.phone" maxlength="11" placeholder="请输入会员手机号码"
+                                style="width: 40%;" @input="setNumber" />
+                            </el-form-item>
+                            <el-form-item label="标题" prop="title">
+                              <el-input v-model="form.title" maxlength="40" placeholder="请输入标题" style="width: 40%;" />
+                            </el-form-item>
+                            <el-form-item label="内容" prop="content">
+                              <el-input type="textarea" rows="5" v-model="form.content" maxlength="300" resize="none"
+                                placeholder="请输入内容" />
+                            </el-form-item>
+                            <el-form-item>
+                              <el-button type="primary" @click.native.prevent="sendMsg">提交</el-button>
+                            </el-form-item>
+                          </el-form>
+                        </el-tab-pane>
+
+                      </el-tabs>
+
+                    </div>
+                    <div class="pfoot">
+                      <p><b>-</b></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 左侧菜单 -->
+          <div id="sidebar"></div>
+        </div>
+
+        <!-- 收件箱-消息弹窗 -->
+        <el-dialog title="消息详情" :visible.sync="isAlert" width="800px" class="showinfo">
+          <el-form label-width="80px">
+            <el-form-item label="标题：">
+              <el-input v-model="msgInfo.title" disabled />
+            </el-form-item>
+            <el-form-item label="来自：">
+              <el-input v-model="msgInfo.from" disabled />
+            </el-form-item>
+            <el-form-item label="时间：" v-if="msgInfo.createTime">
+              <el-input type="text" v-model="msgInfo.createTime.substr(0,19)" disabled />
+            </el-form-item>
+            <el-form-item label="内容：">
+              <el-input type="textarea" rows="5" v-model="msgInfo.content" maxlength="300" resize="none" disabled />
+            </el-form-item>
+          </el-form>
+          <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="isAlert=false">关闭</el-button>
+          </span>
+        </el-dialog>
+
+        <!-- 收件箱-发消息弹窗 -->
+        <el-dialog title="消息详情" :visible.sync="isAlert2" width="800px" class="showinfo">
+          <el-form label-width="80px">
+            <el-form-item label="标题：">
+              <el-input v-model="msgInfo2.title" disabled />
+            </el-form-item>
+            <el-form-item label="来自：">
+              <el-input v-model="msgInfo2.from" disabled />
+            </el-form-item>
+            <el-form-item label="时间：" v-if="msgInfo2.createTime">
+              <el-input type="text" v-model="msgInfo2.createTime.substr(0,19)" disabled />
+            </el-form-item>
+            <el-form-item label="内容：">
+              <el-input type="textarea" rows="5" v-model="msgInfo2.content" maxlength="300" resize="none" disabled />
+            </el-form-item>
+          </el-form>
+          <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="isAlert2=false">关闭</el-button>
+          </span>
+        </el-dialog>
+
+      </div>
+      <!-- 底部导航 -->
+      <div id="footer"></div>
+    </div>
+    <script src="../static/js/utils/jquery.min.js"></script>
+    <script src="../static/js/utils/vue.min.js"></script>
+    <script src="../static/js/utils/element-ui/lib/index.js"></script>
+    <script src="../static/js/utils/layer/layer.js"></script>
+    <script src="../static/js/utils/basepc.js"></script>
+    <script src="../static/js/utils/api.js"></script>
+    <script src="../static/js/web/mynav.js"></script>
+    <script src="../static/js/web/mymsg.js"></script>
+  </body>
+</html>

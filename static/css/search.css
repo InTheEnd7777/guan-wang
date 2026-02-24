@@ -1,0 +1,40 @@
+[v-cloak] {
+  opacity: 0;
+}
+
+.nowrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 表单 */
+.quicksearch select{
+  width: 43.3%;
+}
+
+.quicksearch input{
+  width: 40%;
+}
+
+/* 分页 */
+.pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-pagination-container .ui-pagination-page-item.active {
+  background: var(--color-main);
+  border-color: var(--color-main);
+}
+
+.ui-pagination-container .ui-pagination-page-item:not(.active):hover{
+  border-color: var(--color-main);
+  color: var(--color-main);
+}
+
+/* 列表 */
+.red{
+  color: red;
+}

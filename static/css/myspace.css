@@ -1,0 +1,49 @@
+.quit{
+  cursor: pointer;
+  margin: 0 0 0 10px;
+}
+/* 底部导航 */
+.dibu {
+  width: 1000px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.dibu p {
+  color: #FFF;
+}
+
+.dibu a {
+  color: #FFF;
+}
+
+.dibu a:hover {
+  color: #000;
+}
+
+.bd-1 {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.bd-2 {
+  width: 700px;
+  margin: 0 auto;
+  color: #FFF;
+}
+
+.bd-2 a {
+  color: #FFF；
+}
+
+.bd-2 a:hover {
+  color: #000;
+}
+
+.bd-1 li {
+  list-style: none;
+  float: left;
+  margin: 0 20px;
+  text-align: center;
+}

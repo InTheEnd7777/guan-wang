@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <title></title>
+    <link href="../static/css/theme.css" rel="stylesheet" />
+    <link href="../static/template/search/css/search.css" rel="stylesheet" />
+    <link href="../static/template/search/css/search_style.css" rel="stylesheet" />
+    <!-- 自定义 -->
+    <link href="../static/css/search.css" rel="stylesheet" />
+  </head>
+  <body class="blue full bodybgblue1">
+    <div id="app" v-cloak>
+      <div class="main_current">
+        <div class="s_home cc">
+          <div class="new_topbar_wrap">
+            <div class="new_topbar">
+              <div class="cc">
+                <ul class="new_topbar_right" style=" float:left;">
+                  <li class="noborder"><a href="./index.html">首页</a></li>
+                  <li><a href="./addpost.html" rel="nofollow">发布主题</a></li>
+                  <li><a href="./mypost.html" rel="nofollow">编辑主题</a></li>
+                </ul>
+                <span class="fr" style="padding-top:7px;"> </span>
+                <span class="new_topbar_left fr"><a href="./mine.html">个人中心</a></span>
+              </div>
+            </div>
+          </div>
+          <div class="cc"></div>
+          <div class="c mt10"></div>
+          <div class="s_logo" style="text-align:center;">
+            <div class="logo" style="float:none;margin:70px auto 60px auto;">
+              <a href="./index.html">
+                <img :src="webName.logo" style="margin: 0 0 0 -48px;" />
+              </a>
+            </div>
+            <div class="c"></div>
+            <div style="float:none;margin:0 auto 200px auto; width:596px;">
+              <div class="s_ulA">
+                <ul>
+                  <li name="s8" class="current"><a>主题</a></li>
+                  <!-- <li name="s8"><a>商家</a></li>
+                    <li name="s8"><a>优惠券</a></li>
+                    <li name="s8"><a>团购</a></li>
+                    <li name="s8"><a>资讯</a></li>
+                    <li name="s8"><a>商品</a></li> -->
+                </ul>
+              </div>
+              <div class="s_enter cc">
+                <input placeholder="请输入关键字" v-model="keywords" class="s_input" type="text" @keyup.enter="search" />
+                <button class="s_btn" @click="search">搜 索</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 底部菜单 -->
+      <!-- <div id="menu-botom"></div> -->
+      <script src="../static/js/utils/jquery.min.js"></script>
+      <script src="../static/js/utils/vue.min.js"></script>
+      <script src="../static/js/utils/layer/layer.js"></script>
+      <script src="../static/js/utils/basepc.js"></script>
+      <script src="../static/js/utils/api.js"></script>
+      <!-- <script src="../static/js/web/nav.js"></script> -->
+      <script src="../static/js/web/search.js"></script>
+    </div>
+  </body>
+</html>

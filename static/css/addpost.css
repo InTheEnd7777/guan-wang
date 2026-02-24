@@ -1,0 +1,123 @@
+[v-cloak] {
+  opacity: 0;
+}
+
+body {
+  background: #fff;
+}
+
+.quit {
+  cursor: pointer;
+  margin: 0 0 0 10px;
+}
+
+.container-fluid {
+  background: #f2f2f2;
+}
+
+.form {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px #ccc solid;
+}
+
+/* 隐藏选中蓝色框 */
+:focus {
+  outline: 0 !important;
+}
+
+/* 上传图片去动画 */
+.el-upload-list__item {
+  transition: none !important;
+}
+
+/* 上传图片控件隐藏 */
+.hideUpload .el-upload--picture-card {
+  display: none !important;
+}
+
+.hideUpload .el-upload {
+  display: none !important;
+}
+
+/* 上传图片提示红字 */
+.upimgtxt .el-form-item__error {
+  position: relative;
+  margin-top: 16px;
+  top: 0px;
+}
+
+/* 兼容上传图片红字位移 */
+.el-upload-list--picture-card .el-upload-list__item {
+  margin-bottom: -19px;
+}
+
+/* 红星提示 */
+.uptips {
+  line-height: 1.2;
+  position: relative;
+  top: 10px;
+  width: 100%;
+}
+
+.uptips2 {
+  margin-top: 4px;
+}
+
+.uptips span {
+  font-size: 13px;
+  color: #999;
+  width: 88%;
+  display: inline-block;
+}
+
+.redstar:before,
+.dialogred .el-dialog__title:before {
+  content: "*";
+  color: #ff4949;
+  margin-right: 4px;
+}
+
+/* 弹窗浏览图片 */
+.imgLookDiv {
+  width: 100%;
+  text-align: center;
+}
+
+.imgLook {
+  max-width: 68vh;
+  max-height: 70vh;
+}
+
+.el-image {
+  background: #fff;
+}
+
+.el-image__error {
+  background: #F5F7FA;
+  min-width: 146px;
+  min-height: 146px;
+}
+
+.spinfoImg .el-image__inner {
+  object-fit: cover;
+  width: 146px;
+  height: 146px
+}
+
+/* layer */
+/* 右边x号 */
+.layui-layer-setwin {
+  display: none !important;
+}
+
+.layui-layer-title{
+  padding: 0 80px 0 20px !important;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+  font-size: 12px !important;
+  background-color: var(--color-main) !important;
+  border-color: var(--color-main) !important;
+}

@@ -1,0 +1,94 @@
+/* 导航 */
+.pl-lg-5,
+.px-lg-5 {
+  margin-left: 0 !important;
+}
+
+/* 轮播 */
+.pc-slide {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 400px;
+}
+
+
+.swiper-slide img {
+  position: relative;
+  top: -40px;
+  object-fit: cover;
+}
+
+.arrow-left {
+  background: url(../img/base/prebig.png) no-repeat left top;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  margin-top: -25px;
+  width: 28px;
+  height: 51px;
+  z-index: 10;
+}
+
+.arrow-right {
+  background: url(../img/base/nextbig.png) no-repeat left bottom;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -25px;
+  width: 28px;
+  height: 51px;
+  z-index: 10;
+}
+
+/* 列表 */
+.item-li {
+  width: 255px;
+  margin-right: 30px;
+}
+
+.img-cover {
+  /* object-fit: cover; */
+  object-fit: contain;
+  height: 200px;
+  background: #fff;
+}
+
+.link {
+  font-size: 18px;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ft-13 {
+  font-size: 13px;
+}
+
+.look-more {
+  float: right;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 33px;
+}
+
+.item-li {
+  float: left;
+}
+
+.item-li:last-child {
+  margin-right: 0;
+}
+
+.new-cover {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: #fff;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <title></title>
+    <link href="../static/css/theme.css" rel="stylesheet" />
+    <link href="../static/js/utils/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
+    <link href="../static/template/css/new.common.css" rel="stylesheet" />
+    <link href="../static/template/css/bodybg.css" rel="stylesheet" />
+    <link href="../static/template/css/new.dialog.css" rel="stylesheet" />
+    <link href="../static/template/css/new.my.css" rel="stylesheet" />
+    <!-- 自定义 -->
+    <link href="../static/css/mynav.css" rel="stylesheet" />
+  </head>
+  <body class="blue">
+    <div class="container" id="app" v-cloak>
+      <!-- 顶部导航 -->
+      <div id="toolbar"></div>
+      <div id="main" class="main section-setting">
+        <div class="clearfix main-inner">
+          <!-- 右侧内容区 -->
+          <div class="content">
+            <div class="clearfix content-inner">
+              <div class="content-main">
+                <div class="content-main-inner">
+                  <div class="pwrap setting-userinfo">
+                    <div class="phead">
+                      <div class="phead-inner">
+                        <div class="phead-inner">
+                          <h3 class="ptitle"><span>收藏列表</span></h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pbody" :style="!pgData.length?'margin-top: -10px':''">
+                      <el-button type="primary" size="mini" @click="showDel" v-if="pgData.length">删除</el-button>
+                      <el-table :data="pgData" border class="eltable" ref="table1" @selection-change="selChange">
+                        <el-table-column type="selection" width="40">
+                        </el-table-column>
+                        <el-table-column label="序号" type="index" align="center" :index="(pgIndex-1)*pgSize+1"
+                          width="65">
+                        </el-table-column>
+                        <el-table-column label="收藏的主题">
+                          <template slot-scope="scope">
+                            <span class="ele-title" @click="goUrl(scope.row.topicId)">{{ scope.row.topicTitle }}</span>
+                          </template>
+                        </el-table-column>
+                        <el-table-column label="主题发布日期" width="160">
+                          <template slot-scope="scope">{{ scope.row.topicCreateTime }}</template>
+                        </el-table-column>
+                        <el-table-column label="收藏日期" width="160">
+                          <template slot-scope="scope">{{ scope.row.collectCreateTime }}</template>
+                        </el-table-column>
+                        <el-table-column label="操作" width="90">
+                          <template slot-scope="scope">
+                            <el-button type="primary" size="mini" @click="oneDel(scope.row.id)">删除</el-button>
+                          </template>
+                        </el-table-column>
+                      </el-table>
+                      <el-pagination background layout="total, prev, pager, next" :page-size="pgSize" :total="pgTotal"
+                        :current-page.sync="pgIndex" @pagination="getData" @current-change="pgChange"
+                        v-show="pgTotal>0" />
+                    </div>
+                    <div class="pfoot">
+                      <p><b>-</b></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 左侧菜单 -->
+          <div id="sidebar"></div>
+        </div>
+      </div>
+      <!-- 底部导航 -->
+      <div id="footer"></div>
+    </div>
+    <script src="../static/js/utils/jquery.min.js"></script>
+    <script src="../static/js/utils/vue.min.js"></script>
+    <script src="../static/js/utils/element-ui/lib/index.js"></script>
+    <script src="../static/js/utils/layer/layer.js"></script>
+    <script src="../static/js/utils/basepc.js"></script>
+    <script src="../static/js/utils/api.js"></script>
+    <script src="../static/js/web/mynav.js"></script>
+    <script src="../static/js/web/mycollect.js"></script>
+  </body>
+</html>

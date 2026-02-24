@@ -1,0 +1,424 @@
+[v-cloak] {
+  opacity: 0;
+}
+
+.userbar span {
+  cursor: pointer;
+}
+
+.opac-0 {
+  opacity: 0;
+}
+
+.none {
+  display: none;
+}
+
+.flexct {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* layer */
+.layui-layer-btn .layui-layer-btn0 {
+  background-color: var(--color-main) !important;
+  border-color: var(--color-main) !important;
+}
+
+/* ele颜色 */
+.el-input__inner:focus,
+.el-textarea__inner:focus {
+  border: 1px solid var(--color-main) !important;
+}
+
+.el-button--primary,
+.el-button--primary:hover,
+.el-button--primary:focus,
+.el-button:focus {
+  background-color: var(--color-main);
+  border-color: var(--color-main);
+  border: 1px solid var(--color-main) !important;
+}
+
+.el-button--primary.is-disabled,
+.el-button--primary.is-disabled:active,
+.el-button--primary.is-disabled:focus,
+.el-button--primary.is-disabled:hover {
+  background-color: rgba(239, 168, 183, .5);
+  border-color: rgba(239, 168, 183, .5);
+  border: 1px solid rgba(239, 168, 183, 0) !important;
+}
+
+
+
+.el-button--default:active,
+.el-button--default:focus,
+.el-button--default:hover {
+  background-color: #fff;
+  color: var(--color-main);
+  border-color: var(--color-main);
+}
+
+.el-button--text,
+.el-button--text:active,
+.el-button--text:focus,
+.el-button--text:hover {
+  color: #12459c;
+  background: none;
+  border-color: rgba(0, 0, 0, 0) !important;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: var(--color-main);
+  border-color: var(--color-main);
+}
+
+.el-checkbox__inner:hover,
+.el-checkbox__input.is-focus .el-checkbox__inner {
+  border-color: var(--color-main);
+}
+
+.el-tabs--border-card>.el-tabs__header .el-tabs__item.is-active,
+.el-tabs--border-card>.el-tabs__header .el-tabs__item:hover {
+  color: #000 !important;
+}
+
+.el-upload--picture-card:hover {
+  border-color: var(--color-main) !important;
+}
+
+.el-radio__input.is-checked .el-radio__inner {
+  background-color: var(--color-main);
+  border-color: var(--color-main);
+}
+
+.el-radio__input.is-checked+.el-radio__label {
+  color: var(--color-main);
+}
+
+.el-radio__inner:hover {
+  border-color: var(--color-main);
+}
+
+.el-dialog__close:hover,
+.el-dialog__headerbtn:hover,
+.el-dialog__headerbtn i:hover {
+  color: var(--color-main) !important;
+}
+
+/* Tabs隐藏蓝色阴影边框 */
+.el-tabs__item {
+  box-shadow: none !important;
+}
+
+/* 隐藏选中蓝色框 */
+:focus {
+  outline: 0 !important;
+}
+
+/* ele表格 */
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: var(--color-main);
+}
+
+.el-pager li:not(.active):hover {
+  color: var(--color-main) !important;
+}
+
+.eltable {
+  margin: 10px 0;
+}
+
+/* ele表单 */
+.el-radio__original {
+  display: none !important;
+  /* 隐藏原生 radio 输入，但仍然允许交互 */
+}
+
+.el-radio:focus:not(.is-focus):not(:active):not(.is-disabled) .el-radio__inner {
+  box-shadow: none !important;
+}
+
+.form {
+  float: left;
+  width: 400px;
+  background: #ffffff;
+  padding: 10px 25px 0 25px;
+  box-sizing: border-box;
+}
+
+.el-select {
+  width: 100%;
+}
+
+.el-input {
+  height: 38px;
+}
+
+.input-icon {
+  height: 39px;
+  width: 14px;
+  margin-left: 2px;
+}
+
+.el-login-footer {
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-family: Arial;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.agree .el-form-item__content {
+  line-height: 16px !important;
+}
+
+.agree .el-checkbox {
+  margin-bottom: 0 !important;
+}
+
+.aglink {
+  color: #ed1c24 !important;
+}
+
+.regbom {
+  margin-top: 25px;
+}
+
+.el-textarea__inner {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+/* ele弹窗 */
+.el-dialog__body {
+  padding: 15px 20px;
+}
+
+/* 上传图标防删除跳动高度 */
+.upimgbox {
+  width: 200px;
+  height: 148px;
+  overflow: hidden
+}
+
+.el-upload--picture-card {
+  margin-bottom: 0px !important
+}
+
+/* 上传图片去动画 */
+.el-upload-list__item {
+  transition: none !important;
+}
+
+/* 详情图片浏览 */
+.imgLook .el-image__inner {
+  max-width: 68vh;
+  max-height: 78vh;
+}
+
+.spinfoImg .el-image__inner {
+  object-fit: cover;
+  width: 146px;
+  height: 146px
+}
+
+/* 上传图片控件隐藏 */
+.hideUpload .el-upload--picture-card {
+  display: none !important;
+}
+
+.hideUpload .el-upload {
+  display: none !important;
+}
+
+/* 单个图片晃动 */
+.upimgone {
+  width: 169px;
+  height: 169px;
+  overflow: hidden;
+}
+
+/* 上传图片提示红字 */
+.upimgtxt .el-form-item__error {
+  position: relative;
+  margin-top: -16px
+}
+
+/* 红星提示 */
+.uptips {
+  line-height: 1.2;
+  position: relative;
+  margin: -15px 0 0;
+  width: 100%;
+}
+
+.uptips span {
+  font-size: 13px;
+  color: #999;
+  width: 88%;
+  display: inline-block;
+}
+
+.redstar:before,
+.dialogred .el-dialog__title:before {
+  content: "*";
+  color: #ff4949;
+  margin-right: 4px;
+}
+
+/* 弹窗浏览图片 */
+.imgLookDiv {
+  width: 100%;
+  text-align: center;
+}
+
+.imgLook {
+  max-width: 68vh;
+  max-height: 70vh;
+}
+
+.el-image {
+  background: #fff;
+}
+
+.el-image__error {
+  background: #F5F7FA;
+  min-width: 146px;
+  min-height: 146px;
+}
+
+/* 标题 */
+.ele-title {
+  color: var(--color-main);
+  cursor: pointer;
+}
+
+.ele-title:hover {
+  text-decoration: underline;
+}
+
+/* 弹窗显示 */
+.showinfo .el-input.is-disabled .el-input__inner,
+.showinfo .el-textarea.is-disabled .el-textarea__inner {
+  color: #000;
+}
+
+/* 个人中心 */
+/* 首页 */
+.pwrap a {
+  cursor: pointer;
+}
+
+.pwrap a.detail {
+  color: #12459c;
+}
+
+.red {
+  color: red !important;
+}
+
+/* 分类主题 */
+.pt-title {
+  width: 100%;
+  float: left;
+}
+
+.pt-title a {
+  float: left;
+  word-break: break-all;
+  display: inline-block;
+}
+
+.pt-content {
+  width: calc(100% - 110px);
+}
+
+.pt-timg {
+  width: 75px;
+  height: 75px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 0 0;
+}
+
+.pt-title img {
+  max-width: 75px;
+  max-height: 75px;
+}
+
+/* 置顶弹窗表格 */
+.upgradetd {
+  background: #ebf7ff;
+  padding: 8px 9px;
+  margin: 0 0 10px 0;
+}
+
+.t1 {
+  font-size: 18px;
+  font-family: "microsoft yahei";
+  line-height: 25px;
+}
+
+.t2 {
+  font-size: 12px;
+  color: #333;
+  line-height: 25px;
+}
+
+.t3 {
+  font-size: 12px;
+  color: #585858;
+  margin-top: 5px;
+}
+
+.zdAlert a:link,
+.zdAlert a:visited {
+  color: #12459c;
+  cursor: pointer;
+}
+
+/* 充值金币 */
+.qrcode {
+  width: 300px;
+  height: 300px;
+}
+
+.qrcode img {
+  width: 300px;
+  height: 300px;
+  margin: 0 0 0 30px;
+}
+
+.duigong .el-form-item {
+  margin-bottom: 0;
+}
+
+
+.duigong .el-form-item__label {
+  font-size: 16px;
+}
+
+.bkName {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.bkCard {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+
+.bkMark {
+  font-size: 18px;
+}

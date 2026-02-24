@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta name="viewport"
+      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache" />
+    <title></title>
+    <link href="../static/css/theme.css" rel="stylesheet" />
+    <link href="../static/template/default/css/global.css" rel="stylesheet" />
+    <link href="../static/template/default/css/style.css" rel="stylesheet" />
+    <link href="../static/template/default/css/post.css" rel="stylesheet" />
+    <link href="../static/template/spaces/person/style.css" rel="stylesheet" />
+    <!-- 自定义 -->
+    <link href="../static/css/myspace.css" rel="stylesheet" />
+  </head>
+  <body class="blue bodybgblue1">
+    <div id="app" v-cloak>
+      <div class="bartop">
+        <div class="barcenter">
+          <div class="barleft">
+            <ul class="barcity">
+              <a href="./index.html">返回首页</a>
+            </ul>
+          </div>
+          <!-- 已登录 -->
+          <div class="barright" v-if="userInfo.phone">
+            欢迎用户{{userInfo.phone}}！&nbsp;
+            <a href="./mine.html" v-if="userInfo.phone">个人中心</a>
+            <a href="./mine.html" v-else>登录</a>
+            <a @click="logOut" class="quit">退出</a>
+          </div>
+          <!-- 未登录 -->
+          <div class="barright" v-else>
+            <ul>
+              <a href="./login.html">登录</a>
+            </ul>
+            <ul class="line"><u></u></ul>
+            <ul><a href="./register.html">注册</a></ul>
+          </div>
+
+        </div>
+      </div>
+      <div class="clearfix"></div>
+      <div class="mhead">
+        <div class="logo">
+          <a href="./index.html" target="_blank">
+            <img :src="webName.logo" />
+          </a>
+        </div>
+      </div>
+      <div class="body1000" style="height: calc(100vh - 321px);">
+        <div class="clear15"></div>
+        <div id="main" class="wrapper">
+          <div class="top_info cfix" style="padding-bottom:20px;">
+            <div class="infol">
+              <p>
+                <span class="tx">
+                  <img :src="otherInfo.headPic || '../static/template/images/noavatar_small.gif'" />
+                </span>
+              </p>
+            </div>
+            <div class="xqxinfo">
+              <table>
+                <tbody>
+                  <tr>
+                    <th>用&nbsp;&nbsp;户&nbsp;名</th>
+                    <td>
+                      <p class="yhzh_p">
+                        <strong>{{otherInfo.phone}}</strong>
+                        <img src="../static/template/images/credit/1.gif" />
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>注册日期</th>
+                    <td>{{otherInfo.regTime}}</td>
+                  </tr>
+                  <tr>
+                    <th class="t">认证信息</th>
+                    <td class="t">
+                      <p class="rz">
+                        <span v-if="otherInfo.status==0">
+                          <b>实名未认证</b>
+                          <i class="nameyzw"></i>
+                        </span>
+                        <span v-else>
+                          <b>实名已认证</b>
+                          <i class="nameyz"></i>
+                        </span>
+                        <!-- <span>
+                          <b>营业执照未认证</b>
+                          <i class="zzyzw" title="营业执照未认证"></i>
+                        </span> -->
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="cleafix"></div>
+      <!-- 底部菜单 -->
+      <div class="footer" style="width: 100%; height: 100%; background-color: var(--color-main);">
+        <div class="footer_new" style="background-color: var(--color-main);">
+          <hr />
+          <div class="dibu">
+            <div class="bd-1">
+              <ul class="bd-2">
+                <li>
+                  <a href="./aboutus.html?id=4" target="_blank">关于我们</a>
+                </li>
+                <li>
+                  <a href="./aboutus.html?id=9" target="_blank">联系我们</a>
+                </li>
+                <li>
+                  <a href="./aboutus.html?id=5" target="_blank">主题投诉</a>
+                </li>
+              </ul>
+            </div>
+            <br />
+            <p style="color:#6f6f6f;">
+              Copyright &copy; {{webName.company}}版权所有
+              <a href="http://www.beian.miit.gov.cn">{{webName.icp}}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../static/js/utils/jquery.min.js"></script>
+    <script src="../static/js/utils/vue.min.js"></script>
+    <script src="../static/js/utils/layer/layer.js"></script>
+    <script src="../static/js/utils/basepc.js"></script>
+    <script src="../static/js/utils/api.js"></script>
+    <script src="../static/js/web/myspace.js"></script>
+  </body>
+</html>
