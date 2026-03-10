@@ -12,7 +12,7 @@ app.use(express.static('.'));
 // 👇 第二步：只代理 API 路径（根据你实际的接口前缀）
 // 假设你的接口都是 /auth/xxx, /api/xxx 等
 app.use('/', createProxyMiddleware({
-  target: 'http://100ark.com/api',
+  target: 'http://bm-ft.cn/api',
   changeOrigin: true
 }));
 
