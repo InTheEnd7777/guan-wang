@@ -639,7 +639,6 @@ function setAboutus(i) {
     </span><br>
     <span style="font-size:16px;">联系地址：${webName.addr}</span><br>
     <span style="font-size:16px;">联系电话：${webName.tel}</span><br>
-    <span style="font-size:16px;">联系邮箱：${webName.mail}</span><br>
     </p>
     <p>
       <br>
@@ -650,3 +649,5 @@ function setAboutus(i) {
   $('#rightcontent').html(html[i])
   $('#leftnav' + id).addClass('current')
 }
+
+{/* <span style="font-size:16px;">联系邮箱：${webName.mail}</span><br> */}

@@ -9,7 +9,7 @@ function setMenuBom(){
       <a href="/" class="navbar-brand d-none d-lg-block">
         <img src="${webName.logo}" style="width: 300px;">
       </a>
-      <p>联系电话：${webName.tel}<br>联系邮箱：${webName.mail}<br>联系地址：${webName.addr}</p>
+      <p>联系电话：${webName.tel}<br>联系地址：${webName.addr}</p>
     </div>
     <div class="col-lg-2 col-md-6 mb-5">
       
