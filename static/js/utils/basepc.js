@@ -8,6 +8,8 @@ function getParams(name) {
 
 //封装公司名 1方舟 2半亩
 let webType = 2
+
+// 看看是不是缓存文件
 let webName = {}
 if (webType == 1) {
   webName = {
@@ -97,7 +99,8 @@ function setWebInit() {
   } else {
     //正式
     let url = location.href
-    if (url.indexOf('www.100ark.com') > -1) {
+    if (url.indexOf('http://www.bm-ft.cn') > -1) {
+
       WebUrl = "http://www.bm-ft.cn/api"
     } else {
       WebUrl = "http://bm-ft.cn/api"
@@ -109,7 +112,7 @@ function setWebInit() {
     WebSource = "hzbmft" //自定义的  original
   }
   if (!WebLog) {
-    console.log = function() {
+    console.log = function () {
       return ''
     }
   }
