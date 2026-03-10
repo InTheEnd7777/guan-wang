@@ -68,7 +68,7 @@ function setFooter() {
       CopyRight © <a href="./index.html">${webName.company}</a> 商务联系:${webName.tel} </p>
     <p class="extrainfo">
       All Rights Reserved. 
-      <a rel="nofollow" href="http://www.miibeian.gov.cn/">${webName.icp}</a>
+      <a rel="nofollow" href="http://www.miibeian.gov.cn/" style="color:red">${webName.icp}</a>
     </p>
   </div>
 </div>`

@@ -12,19 +12,14 @@ function setMenuBom(){
       <p>联系电话：${webName.tel}<br>联系邮箱：${webName.mail}<br>联系地址：${webName.addr}</p>
     </div>
     <div class="col-lg-2 col-md-6 mb-5">
-      <h4 class="font-weight-bold mb-4">主题管理</h4>
-      <div class="d-flex flex-column justify-content-start">
-        <a class="text-secondary" href="./addpost.html">
-          <i class="fa fa-angle-right text-dark mr-2"></i>发布主题
-        </a>
-        <a class="text-secondary" href="./mypost.html">
-          <i class="fa fa-angle-right text-dark mr-2"></i>编辑主题
-        </a>
-        <a class="text-secondary" href="./search.html">
-          <i class="fa fa-angle-right text-dark mr-2"></i>主题搜索
-        </a>
-      </div>
+    <h4 class="font-weight-bold mb-4">主题管理</h4>
+    <div class="d-flex flex-wrap m-n1">
+      <a href="./addpost.html" class="btn btn-sm btn-outline-secondary m-1">发布主题</a>
+      <a href="./mypost.html" class="btn btn-sm btn-outline-secondary m-1">编辑主题</a>
+      <a href="./search.html" class="btn btn-sm btn-outline-secondary m-1">主题搜索</a>
     </div>
+  </div>
+
     <div class="col-lg-2 col-md-6 mb-5">
       <h4 class="font-weight-bold mb-4">相关导航</h4>
       <div class="d-flex flex-wrap m-n1">
@@ -39,6 +34,7 @@ function setMenuBom(){
 </div>
 <div class="container-fluid py-4 px-sm-3 px-md-5">
   <p class="m-0 text-center">Copyright © 2025 ${webName.company}版权所有 <a href="https://beian.miit.gov.cn"
+  style="color:#1c8cf5"
       target="_blank">${webName.icp}</a></p>
 </div>`
 $('#menu-botom').html(html)

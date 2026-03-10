@@ -1,5 +1,5 @@
 //获取参数
-let id = getParams('id')||'9'
+let id = getParams('id') || '9'
 
 
 // 设置标题
@@ -15,7 +15,7 @@ function setTitle() {
     8: '用户协议',
     9: '联系我们',
   }
-  document.title = `${tags[id||1]}-${webName.title}`
+  document.title = `${tags[id || 1]}-${webName.title}`
 }
 
 
@@ -244,26 +244,26 @@ function setAboutus(i) {
     </p>`,
     // 关于我们
     4: `<h1 style="text-align:center;height: 30px;"></h1>
-    <h1 style="text-align:center;font-size:26px;font-weight:700;">
+    <h1 style="text-align:center;font-size:26px;font-weight:700;color:#fff;">
       ${webName.title}
     </h1>
     <p>
       <span style="font-size:22px;font-weight:700;"><span
-          style="color:#6C757D;font-size:16px;background-color:#f2f2f2;"><br>
+          style="color:#fff;font-size:16px;background-color:#e9ecef;"><br>
         </span></span>
     </p>
-    <p style="font-size:15px;color:#000000;">
+    <p style="font-size:15px;color:#fff;">
       ${webName.info}
     </p>
-    <p style="font-size:15px;color:#000000;">
+    <p style="font-size:15px;color:#fff;">
       公司环境：
     </p>
     <p>
-    ${webName.type==1?
-    '<!-- <img src="../static/img/aboutus/1.jpg" style="width:800px;"> <br><br> --><img src="../static/img/aboutus/2.jpg" style="width:800px;"> <br><br><img src="../static/img/aboutus/3.jpg" style="width:800px;"> <br><br><img src="../static/img/aboutus/4.jpg" style="width:800px;"> <br><br>'
-    :
-    '<img src="../static/img2/aboutus/1.jpg" style="width:800px;"> <br><br><img src="../static/img2/aboutus/2.jpg" style="width:800px;"> <br><br><img src="../static/img2/aboutus/3.jpg" style="width:800px;"> <br><br><img src="../static/img2/aboutus/4.jpg" style="width:800px;"> <br><br>'
-    }
+    ${webName.type == 1 ?
+        '<!-- <img src="../static/img/aboutus/1.jpg" style="width:800px;"> <br><br> --><img src="../static/img/aboutus/2.jpg" style="width:800px;"> <br><br><img src="../static/img/aboutus/3.jpg" style="width:800px;"> <br><br><img src="../static/img/aboutus/4.jpg" style="width:800px;"> <br><br>'
+        :
+        '<img src="../static/img2/aboutus/1.jpg" style="width:800px;"> <br><br><img src="../static/img2/aboutus/2.jpg" style="width:800px;"> <br><br><img src="../static/img2/aboutus/3.jpg" style="width:800px;"> <br><br><img src="../static/img2/aboutus/4.jpg" style="width:800px;"> <br><br>'
+      }
       
     </p>`,
     // 主题投诉

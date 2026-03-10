@@ -76,7 +76,7 @@
 }
 
 .location a {
-  color: #585858
+  color: #fff 
 }
 
 .cinner {
@@ -99,7 +99,7 @@
   display: block;
   height: 26px;
   line-height: 26px;
-  color: #333;
+  color: #fff;
   text-decoration: none;
   font-size: 12px;
   font-family: microsoft yahei;
@@ -112,7 +112,7 @@
 .cinner .leftnav a.current,
 .cinner .leftnav a:hover {
   color: #fff;
-  background-color: #999
+  background-color: #1286f4
 }
 
 .cinner .rightcontent {
@@ -139,6 +139,8 @@
 
 .rightcontent span{
   font-size:14px;
+  color:#fff
+
 }
 
 .footer {

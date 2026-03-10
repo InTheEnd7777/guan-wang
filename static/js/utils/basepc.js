@@ -7,7 +7,7 @@ function getParams(name) {
 }
 
 //封装公司名 1方舟 2半亩
-let webType = 1
+let webType = 2
 let webName = {}
 if (webType == 1) {
   webName = {
@@ -83,30 +83,33 @@ function setWebInit() {
     //本地
     WebUrl = "http://192.168.0.180:8081"
     WebUrl2 = ""
-    WebSource = "default"
+    WebSource = "hzbmft"
   } else if (WebPre == "-dev") {
     //开发
     WebUrl = "http://192.168.0.180:8081"
     WebUrl2 = ""
-    WebSource = "default"
+    WebSource = "hzbmft"
   } else if (WebPre == "-test") {
     //测试
     WebUrl = "http://192.168.0.180:8081"
     WebUrl2 = ""
-    WebSource = "default"
+    WebSource = "hzbmft"
   } else {
     //正式
     let url = location.href
     if (url.indexOf('www.100ark.com') > -1) {
-      WebUrl = "http://www.bm-ft.cn//api"
+      WebUrl = "http://www.bm-ft.cn/api"
     } else {
-      WebUrl = "http://bm-ft.cn//api"
+      WebUrl = "http://bm-ft.cn/api"
+      // WebUrl = ""
     }
+    // WebSource = "hzbmft"
+
     WebUrl2 = ""
-    WebSource = "default" //自定义的  original
+    WebSource = "hzbmft" //自定义的  original
   }
   if (!WebLog) {
-    console.log = function () {
+    console.log = function() {
       return ''
     }
   }

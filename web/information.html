@@ -1,254 +1,251 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-    <meta name="viewport"
-      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta http-equiv="Expires" content="0" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Cache-control" content="no-cache" />
-    <meta http-equiv="Cache" content="no-cache" />
-    <title></title>
-    <link href="../static/css/theme.css" rel="stylesheet" />
-    <link href="../static/js/utils/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
-    <link href="../static/css/global.css" rel="stylesheet" />
-    <link href="../static/moban/css/css2.css" rel="stylesheet" />
-    <link href="../static/moban/css/all.min.css" rel="stylesheet" />
-    <link href="../static/moban/css/style.css" rel="stylesheet" />
-    <link href="../static/css/common.css" rel="stylesheet" />
-    <link href="../static/template/default/css/style.css" rel="stylesheet" />
-    <!-- 自定义 -->
-    <link href="../static/css/mynav.css" rel="stylesheet" />
-    <link href="../static/css/information.css" rel="stylesheet" />
-  </head>
-  <body class="blue full bodybgblue1">
-    <div id="app" v-cloak>
-      <div class="container-fluid">
-        <div class="row align-items-center bg-light px-lg-5" style="padding: 10px;">
-          <div class="text-truncate col-12 col-md-10">
-            <a class="text-secondary top-a" href="./index.html">欢迎访问{{webName.title}}！</a>
-          </div>
-          <div class="col-md-2">
-            <!-- 已登录 -->
-            <div class="barright" v-if="userInfo.phone">
-              欢迎用户{{userInfo.phone}}！
-              <a href="./mine.html" style="color: red;">个人中心</a>
-              <a class="logout" @click="logOut">退出</a>
-            </div>
-            <!-- 未登录 -->
-            <div class="barright" v-else>
-              <a href="./login.html">登录</a>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="./register.html">注册</a>
-            </div>
-          </div>
-        </div>
-        <div class="row align-items-center py-2 px-lg-5" style="width: 100%;">
-          <div class="container-fluid p-0 mb-3">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
-              <a href="./index.html" class="navbar-brand d-none d-lg-block">
-                <img :src="webName.logo" />
-              </a>
-              <div class="collapse navbar-collapse justify-content-between px-0 px-lg-5" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0" style="margin-left: 260px;">
-                  <a href="./index.html" class="nav-item nav-link">首页</a>
-                  <a href="./category.html?catid=1" class="nav-item nav-link">网页搭建</a>
-                  <a href="./category.html?catid=2" class="nav-item nav-link">软件定制</a>
-                  <a href="./category.html?catid=3" class="nav-item nav-link">UI设计</a>
-                  <a href="./category.html?catid=4" class="nav-item nav-link">APP研发</a>
-                  <a href="./aboutus.html?id=3" class="nav-item nav-link">主题规则</a>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta http-equiv="Expires" content="0" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Cache-control" content="no-cache" />
+  <meta http-equiv="Cache" content="no-cache" />
+  <title></title>
+  <link href="../static/css/theme.css" rel="stylesheet" />
+  <link href="../static/js/utils/element-ui/lib/theme-chalk/index.css" rel="stylesheet" />
+  <link href="../static/css/global.css" rel="stylesheet" />
+  <link href="../static/moban/css/css2.css" rel="stylesheet" />
+  <link href="../static/moban/css/all.min.css" rel="stylesheet" />
+  <link href="../static/moban/css/style.css" rel="stylesheet" />
+  <link href="../static/css/common.css" rel="stylesheet" />
+  <link href="../static/template/default/css/style.css" rel="stylesheet" />
+  <!-- 自定义 -->
+  <link href="../static/css/mynav.css" rel="stylesheet" />
+  <link href="../static/css/information.css" rel="stylesheet" />
+</head>
+
+<body class="blue full bodybgblue1">
+  <div id="app" v-cloak>
+    <div class="container-fluid">
+
+
+
+      <div class="row align-items-center py-2 px-lg-5" style="width: 100%;">
+        <div class="container-fluid p-0 mb-3">
+          <nav class="navbar navbar-expand-lg bg-light navbar-light py-2">
+            <a href="./index.html" class="navbar-brand d-none d-lg-block">
+              <img :src="webName.logo">
+            </a>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-5" id="navbarCollapse">
+              <div class="navbar-nav ml-auto py-0 ">
+                <a href="./index.html" class="nav-item nav-link">首页</a>
+                <a href="./category.html?catid=1" class="nav-item nav-link">网页搭建</a>
+                <a href="./category.html?catid=2" class="nav-item nav-link">软件定制</a>
+                <a href="./category.html?catid=3" class="nav-item nav-link">UI设计</a>
+                <a href="./category.html?catid=4" class="nav-item nav-link">APP研发</a>
+                <a href="./aboutus.html?id=3" class="nav-item nav-link">主题规则</a>
+                <!-- 已登录 -->
+                <div class=" nav-link1" v-if="userInfo.phone">
+                  欢迎用户{{userInfo.phone}}！
+                  <a href="./mine.html" style="color: red;">个人中心</a>
+                  <a class="logout" @click="logOut">退出</a>
+                </div>
+                <!-- 未登录 -->
+                <div class=" nav-link1" v-else>
+                  <a href="./login.html">登录</a>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="./register.html">注册</a>
                 </div>
               </div>
-            </nav>
-          </div>
+            </div>
+          </nav>
         </div>
       </div>
-      <!-- 内容区 -->
-      <div class="bodybgcolor" v-if="isShow">
-        <div class="body1000">
-          <div class="clear"></div>
-          <div class="location">
-            当前位置：
-            <a href="./index.html">{{webName.title}}</a>
-            <code> &gt; </code>
-            <a :href="'./category.html?catid='+info.type">{{tags[info.type]}}</a>
-          </div>
-          <div class="clear"></div>
-          <div class="wrapper">
-            <div class="information_bd">
-              <!-- 是否置顶 首页sy_zhiding 大类dl_zhiding，推荐tuijian -->
-              <div class="bd_left" :class="info.topType==1?'sy_zhiding':info.topType==2?'dl_zhiding':''">
-                <div class="bd_lefter">
-                  <div class="information_hd ">
-                    <ul>
-                      <div class="information_title">
-                        {{info.title}}
-                      </div>
-                      <div class="clearfix"></div>
-                      <div class="information_time">
-                        <!-- <span class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享</a>
+    </div>
+    <!-- 内容区 -->
+    <div class="bodybgcolor" v-if="isShow">
+      <div class="body1000">
+        <div class="clear"></div>
+        <div class="location">
+          当前位置：
+          <a href="./index.html">{{webName.title}}</a>
+          <code> &gt; </code>
+          <a :href="'./category.html?catid='+info.type">{{tags[info.type]}}</a>
+        </div>
+        <div class="clear"></div>
+        <div class="wrapper">
+          <div class="information_bd">
+            <!-- 是否置顶 首页sy_zhiding 大类dl_zhiding，推荐tuijian -->
+            <div class="bd_left" :class="info.topType==1?'sy_zhiding':info.topType==2?'dl_zhiding':''">
+              <div class="bd_lefter">
+                <div class="information_hd ">
+                  <ul>
+                    <div class="information_title">
+                      {{info.title}}
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="information_time">
+                      <!-- <span class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享</a>
                           &nbsp;|</span> -->
-                        <span>{{info.createTime?.substr(0,16)}}发布</span>
-                        <span>
-                          浏览量：{{info.views||0}}
-                        </span>
-                        <span>主题编号：{{id}}</span>
-                        <span class="editor" v-if="userInfo.id && userInfo.id==info.accountId">
-                          <li>
-                            <span @click="topDel(info.topId)" v-if="info.topId">取消置顶</span>
-                            <span @click="showAlert1" v-else>置顶</span>
-                          </li>
-                          <li>
-                            <span @click="postCollect">{{info.isCollect==1?'已收藏':'收藏'}}</span>|
-                          </li>
-                          <li v-if="!info.topId"><span @click="postDel">删除</span>|</li>
-                          <li><span @click="postEdit">修改</span>|</li>
-                          <!-- <li><span @click="showAlert2">举报</span>| </li> -->
-                        </span>
-                        <span class="editor" v-else>
-                          <li><span @click="postCollect">{{info.isCollect==1?'已收藏':'收藏'}}</span></li>
-                          <li><span @click="showAlert2">举报</span>| </li>
-                        </span>
-                      </div>
-                    </ul>
-                  </div>
-                  <div class="clear"></div>
-                  <div class="extra_contact">
-                    <div class="extra">
-                      <div class="zoombox">
-                        <div class="zoompic">
-                          <img :src="info.img[0]" v-if="info.img" />
-                        </div>
+                      <span>{{info.createTime?.substr(0,16)}}发布</span>
+                      <span>
+                        浏览量：{{info.views||0}}
+                      </span>
+                      <span>主题编号：{{id}}</span>
+                      <span class="editor" v-if="userInfo.id && userInfo.id==info.accountId">
+                        <li>
+                          <span @click="topDel(info.topId)" v-if="info.topId">取消置顶</span>
+                          <span @click="showAlert1" v-else>置顶</span>
+                        </li>
+                        <li>
+                          <span @click="postCollect">{{info.isCollect==1?'已收藏':'收藏'}}</span>|
+                        </li>
+                        <li v-if="!info.topId"><span @click="postDel">删除</span>|</li>
+                        <li><span @click="postEdit">修改</span>|</li>
+                        <!-- <li><span @click="showAlert2">举报</span>| </li> -->
+                      </span>
+                      <span class="editor" v-else>
+                        <li><span @click="postCollect">{{info.isCollect==1?'已收藏':'收藏'}}</span></li>
+                        <li><span @click="showAlert2">举报</span>| </li>
+                      </span>
+                    </div>
+                  </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="extra_contact">
+                  <div class="extra">
+                    <div class="zoombox">
+                      <div class="zoompic">
+                        <img :src="info.img[0]" v-if="info.img" />
                       </div>
                     </div>
-                    <div class="contact">
-                      <ul>
-                        <div class="clear"></div>
-                        <ul class="contacter">
-                          <div class="clear"></div>
-                          <li>
-                            <span>联系人：</span>
-                            <span class="tel">{{info.contactName}}</span>
-                          </li>
-                          <li class="qqbm"><span>手机号：</span>
-                            <span class="tel red">{{info.contactPhone}}</span>
-                          </li>
-                          <div class="clear5"></div>
-                          <div class="notice">
-                            <ul>
-                              <strong>{{webName.title}}温馨提示：</strong>若遇到要求提前转账汇款，或报价远低于市场正常价格的情况，大概率存在诈骗风险，请务必提高警惕，切勿轻信！
-                            </ul>
-                          </div>
-                        </ul>
-                        <div class="clear"></div>
-                      </ul>
-                    </div>
                   </div>
-                  <div class="clearfix"></div>
-                  <div class="view_hd">
+                  <div class="contact">
                     <ul>
-                      <li class="now">主题详情</li>
+                      <div class="clear"></div>
+                      <ul class="contacter">
+                        <div class="clear"></div>
+                        <li>
+                          <span>联系人：</span>
+                          <span class="tel">{{info.contactName}}</span>
+                        </li>
+                        <li class="qqbm"><span>手机号：</span>
+                          <span class="tel red">{{info.contactPhone}}</span>
+                        </li>
+                        <div class="clear5"></div>
+                        <div class="notice">
+                          <ul>
+                            <strong>{{webName.title}}温馨提示：</strong>若遇到要求提前转账汇款，或报价远低于市场正常价格的情况，大概率存在诈骗风险，请务必提高警惕，切勿轻信！
+                          </ul>
+                        </div>
+                      </ul>
+                      <div class="clear"></div>
                     </ul>
                   </div>
-                  <div class="clearfix"></div>
-                  <div class="view_bd">
-                    <div class="tablist">
-                      <div class="maincon cfix">
-                        <div v-html="info.content"></div>
-                        如需与我取得联系，烦请注明是通过{{webName.title}}了解到的信息，感谢配合！
-                      </div>
-                      <div class="clearfix"></div>
-                      <div class="bd">
-                        <template v-for="item in info.img">
-                          <img :src="item" class="imginfo" /><br />
-                        </template>
-                      </div>
-                      <div class="clear"></div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="view_hd">
+                  <ul>
+                    <li class="now">主题详情</li>
+                  </ul>
+                </div>
+                <div class="clearfix"></div>
+                <div class="view_bd">
+                  <div class="tablist">
+                    <div class="maincon cfix">
+                      <div v-html="info.content"></div>
+                      如需与我取得联系，烦请注明是通过{{webName.title}}了解到的信息，感谢配合！
                     </div>
+                    <div class="clearfix"></div>
+                    <div class="bd">
+                      <template v-for="item in info.img">
+                        <img :src="item" class="imginfo" /><br />
+                      </template>
+                    </div>
+                    <div class="clear"></div>
                   </div>
-                  <div class="clearfix"></div>
                 </div>
-                <div class="clear"></div>
-                <div class="bd_left_foot">
-                  <ul>
-                    提醒：本平台相关内容由用户自主发布，其真实性、合法性均由发布方负责，建议您仔细甄别！
-                  </ul>
-                </div>
+                <div class="clearfix"></div>
               </div>
-              <!-- 右侧菜单 -->
-              <div class="bd_right">
-                <div class="view_hd" v-if="recShow && recList.length">
-                  <ul>
-                    <li class="now">猜你感兴趣的主题</li>
-                  </ul>
-                </div>
-                <div class="relates" v-if="recShow && recList.length">
-                  <ul>
-                    <li v-for="item in recList" :key="item.id">
-                      <div class="relateimg" style="width: 80px;">
-                        <a :href="'./information.html?id='+item.id" target="_blank">
-                          <img :src="item.img[0]||WebErrImg" onerror="imgErr(this)" v-if="item.img" />
-                        </a>
+              <div class="clear"></div>
+              <div class="bd_left_foot">
+                <ul>
+                  提醒：本平台相关内容由用户自主发布，其真实性、合法性均由发布方负责，建议您仔细甄别！
+                </ul>
+              </div>
+            </div>
+            <!-- 右侧菜单 -->
+            <div class="bd_right">
+              <div class="view_hd" v-if="recShow && recList.length">
+                <ul>
+                  <li class="now">猜你感兴趣的主题</li>
+                </ul>
+              </div>
+              <div class="relates" v-if="recShow && recList.length">
+                <ul>
+                  <li v-for="item in recList" :key="item.id">
+                    <div class="relateimg" style="width: 80px;">
+                      <a :href="'./information.html?id='+item.id" target="_blank">
+                        <img :src="item.img[0]||WebErrImg" onerror="imgErr(this)" v-if="item.img" />
+                      </a>
+                    </div>
+                    <div class="relatetit" style="width:210px;">
+                      <a :href="'./information.html?id='+item.id" target="_blank" class="tit nowrap2">{{item.title}}</a>
+                      <div class="clear"></div>
+                      <div class="cat nowrap4">
+                        {{item.content}}
                       </div>
-                      <div class="relatetit" style="width:210px;">
-                        <a :href="'./information.html?id='+item.id" target="_blank"
-                          class="tit nowrap2">{{item.title}}</a>
-                        <div class="clear"></div>
-                        <div class="cat nowrap4">
-                          {{item.content}}
-                        </div>
-                      </div>
-                      <div class="relatedat" style="width: 100px;">
-                        {{item.createTime.substr(0,10)}}
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-                <div class="clear"></div>
-                <!-- <center>
+                    </div>
+                    <div class="relatedat" style="width: 100px;">
+                      {{item.createTime.substr(0,10)}}
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="clear"></div>
+              <!-- <center>
                   <a href="./category.html?catid=1" class="viewmore">查看更多</a>
                 </center> -->
-                <div class="boxer cfix">
-                  <div class="boxer_hd cfix">
-                    <span>相关分类</span>
-                  </div>
-                  <div class="boxer_bd cfix short">
-                    <ul>
-                      <li><a target="_blank" href="./category.html?catid=1">网页搭建</a></li>
-                      <li><a target="_blank" href="./category.html?catid=2">软件定制</a></li>
-                      <li><a target="_blank" href="./category.html?catid=3">UI设计</a></li>
-                      <li><a target="_blank" href="./category.html?catid=4">APP研发</a></li>
-                    </ul>
-                  </div>
+              <div class="boxer cfix">
+                <div class="boxer_hd cfix">
+                  <span>相关分类</span>
+                </div>
+                <div class="boxer_bd cfix short">
+                  <ul>
+                    <li><a target="_blank" href="./category.html?catid=1">网页搭建</a></li>
+                    <li><a target="_blank" href="./category.html?catid=2">软件定制</a></li>
+                    <li><a target="_blank" href="./category.html?catid=3">UI设计</a></li>
+                    <li><a target="_blank" href="./category.html?catid=4">APP研发</a></li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="clear"></div>
           </div>
+          <div class="clear"></div>
         </div>
       </div>
-      <!-- 置顶-弹窗 -->
-      <el-dialog title="置顶主题" :visible.sync="isAlert1" width="700px" class="zdAlert">
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <div class="upgradetd">
-                  <div class="introTitle"><span style="color:#F30;" class="t1">首页置顶</span><br>
-                    <span class="t2">1天需要3金币</span>
-                  </div>
-                  <div class="t3">网站<span style="color:#FF3300">首页最吸睛的位置</span>为您展示主题，瞬间聚焦所有用户的目光！</div>
+    </div>
+    <!-- 置顶-弹窗 -->
+    <el-dialog title="置顶主题" :visible.sync="isAlert1" width="700px" class="zdAlert">
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <div class="upgradetd">
+                <div class="introTitle"><span style="color:#F30;" class="t1">首页置顶</span><br>
+                  <span class="t2">1天需要3金币</span>
                 </div>
-              </td>
-              <td>
-                <div class="upgradetd" style="margin-left:5px">
-                  <div class="introTitle"><span style="color:#369;" class="t1">大类置顶</span><br>
-                    <span class="t2">1天需要2金币</span>
-                  </div>
-                  <div class="t3">展示于大类类目列表页的<span style="color:#FF3300">最顶端位置</span>，助力吸引更多关注目光！</div>
+                <div class="t3">网站<span style="color:#FF3300">首页最吸睛的位置</span>为您展示主题，瞬间聚焦所有用户的目光！</div>
+              </div>
+            </td>
+            <td>
+              <div class="upgradetd" style="margin-left:5px">
+                <div class="introTitle"><span style="color:#369;" class="t1">大类置顶</span><br>
+                  <span class="t2">1天需要2金币</span>
                 </div>
-              </td>
-              <!-- <td>
+                <div class="t3">展示于大类类目列表页的<span style="color:#FF3300">最顶端位置</span>，助力吸引更多关注目光！</div>
+              </div>
+            </td>
+            <!-- <td>
                 <div class="upgradetd" style="margin-left:5px">
                   <div class="introTitle"><span style="color:green;" class="t1">小类置顶</span><br>
                     <span class="t2">1天需要1金币</span>
@@ -256,81 +253,82 @@
                   <div class="t3">显示在小类类目列表页面的<font color="#FF3300">最顶部位置</font>，吸引更多关注！</div>
                 </div>
               </td> -->
-            </tr>
-          </tbody>
-        </table>
+          </tr>
+        </tbody>
+      </table>
 
-        <el-form ref="form" :model="form" :rules="rules" label-width="140px">
-          <el-form-item label="推广发布的主题：">
-            {{form.title}}
-            <!-- <a :href="'./information.html?id='+form.id" target="_blank">{{form.title}}</a> -->
-          </el-form-item>
-          <el-form-item label="置顶类型：" prop="type">
-            <el-select v-model="form.type" placeholder="请选择级别" @change="changeType" style="width:30%">
-              <el-option :label="item.label" :value="item.value" v-for="(item,i) in typeArr" :key="i"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="置顶天数：" prop="date">
-            <el-select v-model="form.date" placeholder="请选择天数" @change="changeType" style="width:30%"
-              :disabled="!form.type">
-              <el-option :label="item.label" :value="item.value" v-for="(item,i) in timeArr[form.type]"
-                :key="i"></el-option>
-            </el-select>
-          </el-form-item>
-          <div class="nr" style="margin: 0 0 15px;">
-            <b>
-              &nbsp;&nbsp;您当前金币数：<span class="red">{{userInfo.coins||0}}</span>，将扣除您金币数：<span
-                class="red">{{form.coins}}</span> 金币
-            </b>
-          </div>
-          <el-form-item label="">
-            <el-button type="primary" @click.native.prevent="submit">提交置顶</el-button>
-            <el-button type="primary" @click="hideAlert">取消</el-button>
-          </el-form-item>
-        </el-form>
-      </el-dialog>
-      <!-- 举报-弹窗 -->
-      <el-dialog title="举报主题" :visible.sync="isAlert2" width="700px">
-        <el-form ref="form2" :model="form2" :rules="rules2" label-width="100px" v-if="isReport">
-          <el-form-item label="主题标题：" class="look-label">{{form2.title}}</el-form-item>
-          <el-form-item label="主题编号：" style="margin-bottom: 5px;">{{id}}</el-form-item>
-          <el-form-item label="举报类型：" prop="type">
-            <el-select v-model="form2.type" placeholder="请选择" style="width:30%">
-              <el-option :label="item.label" :value="item.value" v-for="(item,i) in type2Arr" :key="i"></el-option>
-            </el-select>
-          </el-form-item>
-          <el-form-item label="情况说明：" prop="mask">
-            <el-input type="textarea" rows="5" v-model="form2.mask" resize="none" placeholder="请输入" />
-          </el-form-item>
-          <el-form-item label="">
-            <el-button type="primary" @click.native.prevent="submit2">确认提交</el-button>
-            <el-button type="primary" @click="isAlert2=false">取消</el-button>
-          </el-form-item>
-        </el-form>
-        <!-- 举报成功 -->
-        <div v-if="!isReport">
-          <div style="margin:10px 15px">
-            <div style="color:red; font-size:12px">
-              <h1 style="color:red; font-size:24px">感谢您的举报 :)</h1><br>●
-              在{{webName.title}}，每天有数千条违规主题通过用户举报被删除。<br><br>●
-              如果你是不小心点错了举报按钮，别担心。只有当一个主题收到一定数量的举报时才会被删除。
-            </div>
-          </div>
-          <el-button type="primary" @click="hideAlert2" style="margin:10px 0 10px 20px">关闭</el-button>
+      <el-form ref="form" :model="form" :rules="rules" label-width="140px">
+        <el-form-item label="推广发布的主题：">
+          {{form.title}}
+          <!-- <a :href="'./information.html?id='+form.id" target="_blank">{{form.title}}</a> -->
+        </el-form-item>
+        <el-form-item label="置顶类型：" prop="type">
+          <el-select v-model="form.type" placeholder="请选择级别" @change="changeType" style="width:30%">
+            <el-option :label="item.label" :value="item.value" v-for="(item,i) in typeArr" :key="i"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="置顶天数：" prop="date">
+          <el-select v-model="form.date" placeholder="请选择天数" @change="changeType" style="width:30%"
+            :disabled="!form.type">
+            <el-option :label="item.label" :value="item.value" v-for="(item,i) in timeArr[form.type]" :key="i">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <div class="nr" style="margin: 0 0 15px;">
+          <b>
+            &nbsp;&nbsp;您当前金币数：<span class="red">{{userInfo.coins||0}}</span>，将扣除您金币数：<span
+              class="red">{{form.coins}}</span> 金币
+          </b>
         </div>
-      </el-dialog>
-    </div>
-    <!-- 底部菜单 -->
-    <div id="menu-botom"></div>
-    <script src="../static/js/utils/jquery.min.js"></script>
-    <script src="../static/js/utils/vue.min.js"></script>
-    <script src="../static/js/utils/layer/layer.js"></script>
-    <script src="../static/js/utils/element-ui/lib/index.js"></script>
-    <script src="../static/js/utils/basepc.js"></script>
-    <script src="../static/js/utils/api.js"></script>
-    <script src="../static/js/utils/pagination/jquery.pagination.min.js"></script>
-    <link href="../static/js/utils/pagination/jquery.pagination.css" rel="stylesheet" />
-    <script src="../static/js/web/nav.js"></script>
-    <script src="../static/js/web/information.js"></script>
-  </body>
+        <el-form-item label="">
+          <el-button type="primary" @click.native.prevent="submit">提交置顶</el-button>
+          <el-button type="primary" @click="hideAlert">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
+    <!-- 举报-弹窗 -->
+    <el-dialog title="举报主题" :visible.sync="isAlert2" width="700px">
+      <el-form ref="form2" :model="form2" :rules="rules2" label-width="100px" v-if="isReport">
+        <el-form-item label="主题标题：" class="look-label">{{form2.title}}</el-form-item>
+        <el-form-item label="主题编号：" style="margin-bottom: 5px;">{{id}}</el-form-item>
+        <el-form-item label="举报类型：" prop="type">
+          <el-select v-model="form2.type" placeholder="请选择" style="width:30%">
+            <el-option :label="item.label" :value="item.value" v-for="(item,i) in type2Arr" :key="i"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="情况说明：" prop="mask">
+          <el-input type="textarea" rows="5" v-model="form2.mask" resize="none" placeholder="请输入" />
+        </el-form-item>
+        <el-form-item label="">
+          <el-button type="primary" @click.native.prevent="submit2">确认提交</el-button>
+          <el-button type="primary" @click="isAlert2=false">取消</el-button>
+        </el-form-item>
+      </el-form>
+      <!-- 举报成功 -->
+      <div v-if="!isReport">
+        <div style="margin:10px 15px">
+          <div style="color:red; font-size:12px">
+            <h1 style="color:red; font-size:24px">感谢您的举报 :)</h1><br>●
+            在{{webName.title}}，每天有数千条违规主题通过用户举报被删除。<br><br>●
+            如果你是不小心点错了举报按钮，别担心。只有当一个主题收到一定数量的举报时才会被删除。
+          </div>
+        </div>
+        <el-button type="primary" @click="hideAlert2" style="margin:10px 0 10px 20px">关闭</el-button>
+      </div>
+    </el-dialog>
+  </div>
+  <!-- 底部菜单 -->
+  <div id="menu-botom"></div>
+  <script src="../static/js/utils/jquery.min.js"></script>
+  <script src="../static/js/utils/vue.min.js"></script>
+  <script src="../static/js/utils/layer/layer.js"></script>
+  <script src="../static/js/utils/element-ui/lib/index.js"></script>
+  <script src="../static/js/utils/basepc.js"></script>
+  <script src="../static/js/utils/api.js"></script>
+  <script src="../static/js/utils/pagination/jquery.pagination.min.js"></script>
+  <link href="../static/js/utils/pagination/jquery.pagination.css" rel="stylesheet" />
+  <script src="../static/js/web/nav.js"></script>
+  <script src="../static/js/web/information.js"></script>
+</body>
+
 </html>

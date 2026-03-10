@@ -1270,7 +1270,7 @@ input.error {
   border: none;
   cursor: pointer;
   text-align: center;
-  font: 700 14px/34px "ËÎÌå", sans-serif;
+  font: 700 14px/34px "ï¿½ï¿½ï¿½ï¿½", sans-serif;
   color: #fff
 }
 
@@ -1283,7 +1283,7 @@ input.error {
   border: none;
   cursor: pointer;
   text-align: center;
-  font: 700 14px/34px "ËÎÌå", sans-serif;
+  font: 700 14px/34px "ï¿½ï¿½ï¿½ï¿½", sans-serif;
   color: #a0a0a0
 }
 
@@ -1341,9 +1341,9 @@ select.input {
   border-radius: 7px;
   -moz-border-radius: 7px;
   padding: 10px 0;
-  background-image: -moz-linear-gradient(top, #f7f7f7, #f2f2f2);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f7f7f7), color-stop(1, #f2f2f2));
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#f2f2f2', GradientType='0')
+  background-image: -moz-linear-gradient(top, #f7f7f7, #e9ecef);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f7f7f7), color-stop(1, #e9ecef));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#e9ecef', GradientType='0')
 }
 
 .authcode {

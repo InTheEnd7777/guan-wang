@@ -21,40 +21,34 @@
   <body class="blue full bodybgblue1">
     <div id="app" v-cloak>
       <div class="container-fluid">
-        <div class="row align-items-center bg-light px-lg-5" style="padding: 10px;">
-          <div class="text-truncate col-12 col-md-10">
-            <a class="text-secondary top-a" href="./index.html">欢迎访问{{webName.title}}！</a>
-          </div>
-          <div class="col-md-2">
-            <!-- 已登录 -->
-            <div class="barright" v-if="userInfo.phone">
-              欢迎用户{{userInfo.phone}}！
-              <a href="./mine.html" style="color: red;">个人中心</a>
-              <a class="logout" @click="logOut">退出</a>
-            </div>
-            <!-- 未登录 -->
-            <div class="barright" v-else>
-              <a href="./login.html">登录</a>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="./register.html">注册</a>
-            </div>
-          </div>
-        </div>
+    
 
         <div class="row align-items-center py-2 px-lg-5" style="width: 100%;">
           <div class="container-fluid p-0 mb-3">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light py-2 py-lg-0 px-lg-5">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-2">
               <a href="./index.html" class="navbar-brand d-none d-lg-block">
                 <img :src="webName.logo">
               </a>
               <div class="collapse navbar-collapse justify-content-between px-0 px-lg-5" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0" style="margin-left: 260px;">
+                <div class="navbar-nav ml-auto py-0 ">
                   <a href="./index.html" class="nav-item nav-link">首页</a>
                   <a href="./category.html?catid=1" class="nav-item nav-link">网页搭建</a>
                   <a href="./category.html?catid=2" class="nav-item nav-link">软件定制</a>
                   <a href="./category.html?catid=3" class="nav-item nav-link">UI设计</a>
                   <a href="./category.html?catid=4" class="nav-item nav-link">APP研发</a>
                   <a href="./aboutus.html?id=3" class="nav-item nav-link">主题规则</a>
+                  <!-- 已登录 -->
+                  <div class=" nav-link1" v-if="userInfo.phone">
+                    欢迎用户{{userInfo.phone}}！
+                    <a href="./mine.html" style="color: red;">个人中心</a>
+                    <a class="logout" @click="logOut">退出</a>
+                  </div>
+                  <!-- 未登录 -->
+                  <div class=" nav-link1" v-else>
+                    <a href="./login.html">登录</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="./register.html">注册</a>
+                  </div>
                 </div>
               </div>
             </nav>

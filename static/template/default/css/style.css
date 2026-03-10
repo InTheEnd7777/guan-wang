@@ -434,7 +434,14 @@
   text-align: left;
   margin: 0;
   background: url(../../images/global/location.gif) no-repeat 0 2px;
-  padding-left: 23px
+  padding-left: 23px;
+  color: #fff;
+
+}
+.location a{ 
+ 
+  color: #fff;
+
 }
 
 .none,

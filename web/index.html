@@ -1,119 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport"
-      content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="Cache" content="no-cache">
-    <title></title>
-    <link href="../static/css/theme.css" rel="stylesheet" />
-    <link href="../static/css/global.css" rel="stylesheet">
-    <link href="../static/moban/css/css2.css" rel="stylesheet">
-    <link href="../static/moban/css/all.min.css" rel="stylesheet">
-    <link href="../static/moban/css/style.css" rel="stylesheet">
-    <link href="../static/css/common.css" rel="stylesheet">
-    <!-- 自定义 -->
-    <link href="../static/css/index.css" rel="stylesheet">
-  </head>
-  <body class="blue full bodybgblue1">
-    <div id="app" v-cloak>
-      <div class="container-fluid">
-        <div class="row align-items-center bg-light px-lg-5" style="padding: 10px;">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <title></title>
+  <link href="../static/css/theme.css" rel="stylesheet" />
+  <link href="../static/css/global.css" rel="stylesheet">
+  <link href="../static/moban/css/css2.css" rel="stylesheet">
+  <link href="../static/moban/css/all.min.css" rel="stylesheet">
+  <link href="../static/moban/css/style.css" rel="stylesheet">
+  <link href="../static/css/common.css" rel="stylesheet">
+  <!-- 自定义 -->
+  <link href="../static/css/index.css" rel="stylesheet">
+</head>
+
+<body class="blue full bodybgblue1">
+  <div id="app" v-cloak>
+    <div class="container-fluid">
+      <!-- <div class="row align-items-center bg-light px-lg-5" style="padding: 10px;">
           <div class="text-truncate col-12 col-md-10">
             <a class="text-secondary top-a" href="./index.html">欢迎访问{{webName.title}}！</a>
           </div>
-          <div class="col-md-2">
-            <!-- 已登录 -->
-            <div class="barright" v-if="userInfo.phone">
-              欢迎用户{{userInfo.phone}}！
-              <a href="./mine.html" style="color: red;">个人中心</a>
-              <a class="logout" @click="logOut">退出</a>
-            </div>
-            <!-- 未登录 -->
-            <div class="barright" v-else>
-              <a href="./login.html">登录</a>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="./register.html">注册</a>
-            </div>
-          </div>
-        </div>
+     
+        </div> -->
 
-        <div class="row align-items-center py-2 px-lg-5" style="width: 100%;">
-          <div class="container-fluid p-0 mb-3">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light py-2">
-              <a href="./index.html" class="navbar-brand d-none d-lg-block">
-                <img :src="webName.logo">
-              </a>
-              <div class="collapse navbar-collapse justify-content-between px-0 px-lg-5" id="navbarCollapse">
-                <div class="navbar-nav ml-auto py-0 ">
-                  <a href="./index.html" class="nav-item nav-link">首页</a>
-                  <a href="./category.html?catid=1" class="nav-item nav-link">网页搭建</a>
-                  <a href="./category.html?catid=2" class="nav-item nav-link">软件定制</a>
-                  <a href="./category.html?catid=3" class="nav-item nav-link">UI设计</a>
-                  <a href="./category.html?catid=4" class="nav-item nav-link">APP研发</a>
-                  <a href="./aboutus.html?id=3" class="nav-item nav-link">主题规则</a>
+      <div class="row align-items-center py-2 px-lg-5" style="width: 100%;">
+        <div class="container-fluid p-0 mb-3">
+          <nav class="navbar navbar-expand-lg bg-light navbar-light py-2">
+            <a href="./index.html" class="navbar-brand d-none d-lg-block">
+              <img :src="webName.logo">
+            </a>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-5" id="navbarCollapse">
+              <div class="navbar-nav ml-auto py-0 ">
+                <a href="./index.html" class="nav-item nav-link">首页</a>
+                <a href="./category.html?catid=1" class="nav-item nav-link">网页搭建</a>
+                <a href="./category.html?catid=2" class="nav-item nav-link">软件定制</a>
+                <a href="./category.html?catid=3" class="nav-item nav-link">UI设计</a>
+                <a href="./category.html?catid=4" class="nav-item nav-link">APP研发</a>
+                <a href="./aboutus.html?id=3" class="nav-item nav-link">主题规则</a>
+                <!-- 已登录 -->
+                <div class=" nav-link1" v-if="userInfo.phone">
+                  欢迎用户{{userInfo.phone}}！
+                  <a href="./mine.html" style="color: red;">个人中心</a>
+                  <a class="logout" @click="logOut">退出</a>
+                </div>
+                <!-- 未登录 -->
+                <div class=" nav-link1" v-else>
+                  <a href="./login.html">登录</a>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="./register.html">注册</a>
                 </div>
               </div>
-            </nav>
-          </div>
+            </div>
+          </nav>
         </div>
-        <!-- 轮播 -->
-        <div class="pc-slide">
-          <div class="swiper-container">
-            <a class="arrow-left" href=""></a>
-            <a class="arrow-right" href=""></a>
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="./category.html?catid=1"><img :src="webName.banner1"></a>
-              </div>
-              <div class="swiper-slide">
-                <a href="./category.html?catid=2"><img :src="webName.banner2"></a>
-              </div>
+      </div>
+      <!-- 轮播 -->
+      <div class="pc-slide">
+        <div class="swiper-container">
+          <a class="arrow-left" href=""></a>
+          <a class="arrow-right" href=""></a>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="./category.html?catid=1"><img :src="webName.banner1"></a>
+            </div>
+            <div class="swiper-slide">
+              <a href="./category.html?catid=2"><img :src="webName.banner2"></a>
             </div>
           </div>
         </div>
       </div>
-      <!-- 推荐 和 最新 -->
-      <div class="container-fluid pt-3 px-3">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-8">
-              <div class="row mb-3">
-                <div class="col-12">
-                  <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
-                    <h3 class="m-0">主题推荐</h3>
-                  </div>
+    </div>
+    <!-- 推荐 和 最新 -->
+    <div class="container-fluid pt-3 px-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                  <h3 class="m-0">主题推荐</h3>
                 </div>
-                <div class="col-lg-6" v-if="recShow && !recList.length">暂无相关记录！</div>
-                <div class="col-lg-6" v-for="(item,i) in recList" :key="item.id">
-                  <div class="d-flex mb-3">
-                    <a :href="'./information.html?id='+item.id">
-                      <img :src="item.img[0]||WebErrImg" onerror="imgErr(this)" class="new-cover">
-                    </a>
-                    <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                      <div class="mb-1 ft-13">
-                        <a :href="'./category.html?catid='+item.type">{{tags[item.type]}}</a>
-                        <span class="px-1">/</span>
-                        <span>[{{item.createTime?.substr(5,5)}}]</span>
-                      </div>
-                      <a class="h6 m-0" :href="'./information.html?id='+item.id">{{item.title}}</a>
-                    </div>
-                  </div>
-                </div>
-
               </div>
-            </div>
-
-            <div class="col-lg-4 pt-3 pt-lg-0">
-              <div class="pb-3">
-                <div class="bg-light py-2 px-4 mb-3">
-                  <h3 class="m-0">最新主题</h3>
-                </div>
-                <div class="nodata" v-if="newShow && !newList.length">暂无相关记录！</div>
-                <div class="d-flex mb-3" v-for="(item,i) in newList" :key="item.id">
+              <div class="col-lg-6" v-if="recShow && !recList.length">暂无相关记录！</div>
+              <div class="col-lg-6" v-for="(item,i) in recList" :key="item.id">
+                <div class="d-flex mb-3">
                   <a :href="'./information.html?id='+item.id">
                     <img :src="item.img[0]||WebErrImg" onerror="imgErr(this)" class="new-cover">
                   </a>
@@ -127,113 +104,152 @@
                   </div>
                 </div>
               </div>
+
             </div>
-
           </div>
-        </div>
-      </div>
-      <!-- 分类 -->
-      <div class="container-fluid">
-        <div class="container">
 
-          <div class="row" v-if="cateList1.length">
-            <div class="col-lg-12 py-3">
-              <div class="bg-light py-2 px-4 mb-3">
-                <h3 class="m-0">网页搭建<a class="look-more" href="./category.html?catid=1">查看更多</a></h3>
+
+
+
+
+
+
+          <div class="col-lg-12">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                  <h3 class="m-0">最新主题</h3>
+                </div>
               </div>
-              <div class="item-ul">
-                <div class="item-li" v-for="(item,i) in cateList1" :key="item.id" v-if="i<4">
-                  <div class="position-relative">
-                    <a :href="'./information.html?id='+item.id">
-                      <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
-                    </a>
-                    <div class="overlay position-relative bg-light">
-                      <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
-                      <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
+              <div class="col-lg-6" v-if="newShow && !newList.length">暂无相关记录！</div>
+              <div class="col-lg-6" v-for="(item,i) in newList" :key="item.id">
+                <div class="d-flex mb-3">
+                  <a :href="'./information.html?id='+item.id">
+                    <img :src="item.img[0]||WebErrImg" onerror="imgErr(this)" class="new-cover">
+                  </a>
+                  <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
+                    <div class="mb-1 ft-13">
+                      <a :href="'./category.html?catid='+item.type">{{tags[item.type]}}</a>
+                      <span class="px-1">/</span>
+                      <span>[{{item.createTime?.substr(5,5)}}]</span>
                     </div>
+                    <a class="h6 m-0" :href="'./information.html?id='+item.id">{{item.title}}</a>
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
 
-          <div class="row" v-if="cateList2.length">
-            <div class="col-lg-12 py-3">
-              <div class="bg-light py-2 px-4 mb-3">
-                <h3 class="m-0">软件定制<a class="look-more" href="./category.html?catid=2">查看更多</a></h3>
-              </div>
-              <div class="item-ul">
-                <div class="item-li" v-for="(item,i) in cateList2" :key="item.id" v-if="i<4">
-                  <div class="position-relative">
-                    <a :href="'./information.html?id='+item.id">
-                      <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
-                    </a>
-                    <div class="overlay position-relative bg-light">
-                      <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
-                      <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="row" v-if="cateList3.length">
-            <div class="col-lg-12 py-3">
-              <div class="bg-light py-2 px-4 mb-3">
-                <h3 class="m-0">UI设计<a class="look-more" href="./category.html?catid=3">查看更多</a></h3>
-              </div>
-              <div class="item-ul">
-                <div class="item-li" v-for="(item,i) in cateList3" :key="item.id" v-if="i<4">
-                  <div class="position-relative">
-                    <a :href="'./information.html?id='+item.id">
-                      <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
-                    </a>
-                    <div class="overlay position-relative bg-light">
-                      <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
-                      <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="row" v-if="cateList4.length">
-            <div class="col-lg-12 py-3">
-              <div class="bg-light py-2 px-4 mb-3">
-                <h3 class="m-0">APP研发<a class="look-more" href="./category.html?catid=4">查看更多</a></h3>
-              </div>
-              <div class="item-ul">
-                <div class="item-li" v-for="(item,i) in cateList4" :key="item.id" v-if="i<4">
-                  <div class="position-relative">
-                    <a :href="'./information.html?id='+item.id">
-                      <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
-                    </a>
-                    <div class="overlay position-relative bg-light">
-                      <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
-                      <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
 
         </div>
       </div>
     </div>
-    <!-- 底部菜单 -->
-    <div id="menu-botom"></div>
-    <script src="../static/js/utils/jquery.min.js"></script>
-    <script src="../static/js/utils/vue.min.js"></script>
-    <script src="../static/js/utils/layer/layer.js"></script>
-    <script src="../static/js/utils/basepc.js"></script>
-    <script src="../static/js/utils/api.js"></script>
-    <script src="../static/js/utils/swiper/swiper.min.js"></script>
-    <link href="../static/js/utils/swiper/swiper.css" rel="stylesheet">
-    <script src="../static/js/web/nav.js"></script>
-    <script src="../static/js/web/index.js"></script>
-  </body>
+    <!-- 分类 -->
+    <div class="container-fluid">
+      <div class="container">
+
+        <div class="row" v-if="cateList1.length">
+          <div class="col-lg-12 py-3">
+            <div class="bg-light py-2 px-4 mb-3">
+              <h3 class="m-0">网页搭建<a class="look-more" href="./category.html?catid=1">查看更多</a></h3>
+            </div>
+            <div class="item-ul">
+              <div class="item-li" v-for="(item,i) in cateList1" :key="item.id" v-if="i<4">
+                <div class="position-relative">
+                  <a :href="'./information.html?id='+item.id">
+                    <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
+                  </a>
+                  <div class="overlay position-relative bg-light">
+                    <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
+                    <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" v-if="cateList2.length">
+          <div class="col-lg-12 py-3">
+            <div class="bg-light py-2 px-4 mb-3">
+              <h3 class="m-0">软件定制<a class="look-more" href="./category.html?catid=2">查看更多</a></h3>
+            </div>
+            <div class="item-ul">
+              <div class="item-li" v-for="(item,i) in cateList2" :key="item.id" v-if="i<4">
+                <div class="position-relative">
+                  <a :href="'./information.html?id='+item.id">
+                    <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
+                  </a>
+                  <div class="overlay position-relative bg-light">
+                    <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
+                    <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" v-if="cateList3.length">
+          <div class="col-lg-12 py-3">
+            <div class="bg-light py-2 px-4 mb-3">
+              <h3 class="m-0">UI设计<a class="look-more" href="./category.html?catid=3">查看更多</a></h3>
+            </div>
+            <div class="item-ul">
+              <div class="item-li" v-for="(item,i) in cateList3" :key="item.id" v-if="i<4">
+                <div class="position-relative">
+                  <a :href="'./information.html?id='+item.id">
+                    <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
+                  </a>
+                  <div class="overlay position-relative bg-light">
+                    <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
+                    <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" v-if="cateList4.length">
+          <div class="col-lg-12 py-3">
+            <div class="bg-light py-2 px-4 mb-3">
+              <h3 class="m-0">APP研发<a class="look-more" href="./category.html?catid=4">查看更多</a></h3>
+            </div>
+            <div class="item-ul">
+              <div class="item-li" v-for="(item,i) in cateList4" :key="item.id" v-if="i<4">
+                <div class="position-relative">
+                  <a :href="'./information.html?id='+item.id">
+                    <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
+                  </a>
+                  <div class="overlay position-relative bg-light">
+                    <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
+                    <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- 底部菜单 -->
+  <div id="menu-botom"></div>
+  <script src="../static/js/utils/jquery.min.js"></script>
+  <script src="../static/js/utils/vue.min.js"></script>
+  <script src="../static/js/utils/layer/layer.js"></script>
+  <script src="../static/js/utils/basepc.js"></script>
+  <script src="../static/js/utils/api.js"></script>
+  <script src="../static/js/utils/swiper/swiper.min.js"></script>
+  <link href="../static/js/utils/swiper/swiper.css" rel="stylesheet">
+  <script src="../static/js/web/nav.js"></script>
+  <script src="../static/js/web/index.js"></script>
+</body>
 
 </html>
