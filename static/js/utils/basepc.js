@@ -98,15 +98,15 @@ function setWebInit() {
     //正式
     let url = location.href
     if (url.indexOf('www.100ark.com') > -1) {
-      WebUrl = "http://www.100ark.com/api"
+      WebUrl = "http://www.bm-ft.cn//api"
     } else {
-      WebUrl = "http://100ark.com/api"
+      WebUrl = "http://bm-ft.cn//api"
     }
     WebUrl2 = ""
     WebSource = "default" //自定义的  original
   }
   if (!WebLog) {
-    console.log = function() {
+    console.log = function () {
       return ''
     }
   }
