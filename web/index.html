@@ -31,7 +31,7 @@
         </div> -->
 
       <div class="row align-items-center py-2 px-lg-5" style="width: 100%;">
-        <div class="container-fluid p-0 mb-3">
+        <div class="container-fluid p-0 mb-3title">
           <nav class="navbar navbar-expand-lg bg-light navbar-light py-2">
             <a href="./index.html" class="navbar-brand d-none d-lg-block">
               <img :src="webName.logo">
@@ -62,7 +62,7 @@
         </div>
       </div>
       <!-- 轮播 -->
-      <div class="pc-slide">
+      <!-- <div class="pc-slide">
         <div class="swiper-container">
           <a class="arrow-left" href=""></a>
           <a class="arrow-right" href=""></a>
@@ -75,26 +75,32 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+    </div>
+    <!-- 图片介绍 -->
+    <div class="img-box">
+      <img src="../static//img/index/3.png" alt="">
+      <!-- <img src="../static//img/index/1.png" alt=""> -->
+      <!-- <img src="../static//img/index/2.png" alt=""> -->
     </div>
     <!-- 推荐 和 最新 -->
-    <div class="container-fluid pt-3 px-3">
+    <!-- <div class="container-fluid pt-3 px-3">
       <div class="container">
         <div class="row">
           <div class="col-lg-12">
             <div class="row mb-3">
               <div class="col-12">
-                <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                <div class="t-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                   <h3 class="m-0">主题推荐</h3>
                 </div>
               </div>
               <div class="col-lg-6" v-if="recShow && !recList.length">暂无相关记录！</div>
-              <div class="col-lg-6" v-for="(item,i) in recList" :key="item.id">
-                <div class="d-flex mb-3">
+              <div class="col-lg-4" v-for="(item,i) in recList" :key="item.id">
+                <div class="box-flex mb-3">
                   <a :href="'./information.html?id='+item.id">
                     <img :src="item.img[0]||WebErrImg" onerror="imgErr(this)" class="new-cover">
                   </a>
-                  <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
+                  <div class="w-100 box-flex flex-column justify-content-center bg-box px-3" style="height: 100px;">
                     <div class="mb-1 ft-13">
                       <a :href="'./category.html?catid='+item.type">{{tags[item.type]}}</a>
                       <span class="px-1">/</span>
@@ -117,17 +123,17 @@
           <div class="col-lg-12">
             <div class="row mb-3">
               <div class="col-12">
-                <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                <div class="t-flex align-items-center justify-content-between bg-light py-2 px-4  mb-3">
                   <h3 class="m-0">最新主题</h3>
                 </div>
               </div>
               <div class="col-lg-6" v-if="newShow && !newList.length">暂无相关记录！</div>
-              <div class="col-lg-6" v-for="(item,i) in newList" :key="item.id">
-                <div class="d-flex mb-3">
+              <div class="col-lg-4" v-for="(item,i) in newList" :key="item.id">
+                <div class="box-flex mb-3">
                   <a :href="'./information.html?id='+item.id">
                     <img :src="item.img[0]||WebErrImg" onerror="imgErr(this)" class="new-cover">
                   </a>
-                  <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
+                  <div class="w-100 box-flex flex-column justify-content-center bg-box px-3" style="height: 100px;">
                     <div class="mb-1 ft-13">
                       <a :href="'./category.html?catid='+item.type">{{tags[item.type]}}</a>
                       <span class="px-1">/</span>
@@ -147,23 +153,23 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- 分类 -->
-    <div class="container-fluid">
+    <!-- <div class="container-fluid">
       <div class="container">
 
         <div class="row" v-if="cateList1.length">
           <div class="col-lg-12 py-3">
-            <div class="bg-light py-2 px-4 mb-3">
+            <div class="bg-light py-2 px-4title  mb-3">
               <h3 class="m-0">网页搭建<a class="look-more" href="./category.html?catid=1">查看更多</a></h3>
             </div>
             <div class="item-ul">
               <div class="item-li" v-for="(item,i) in cateList1" :key="item.id" v-if="i<4">
-                <div class="position-relative">
+                <div class="position-relative d-box-bg">
                   <a :href="'./information.html?id='+item.id">
                     <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
                   </a>
-                  <div class="overlay position-relative bg-light">
+                  <div class="overlay position-relative bg-box">
                     <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
                     <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
                   </div>
@@ -175,16 +181,16 @@
 
         <div class="row" v-if="cateList2.length">
           <div class="col-lg-12 py-3">
-            <div class="bg-light py-2 px-4 mb-3">
+            <div class="bg-light py-2 px-4title  mb-3">
               <h3 class="m-0">软件定制<a class="look-more" href="./category.html?catid=2">查看更多</a></h3>
             </div>
             <div class="item-ul">
               <div class="item-li" v-for="(item,i) in cateList2" :key="item.id" v-if="i<4">
-                <div class="position-relative">
+                <div class="position-relative d-box-bg">
                   <a :href="'./information.html?id='+item.id">
                     <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
                   </a>
-                  <div class="overlay position-relative bg-light">
+                  <div class="overlay position-relative bg-box">
                     <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
                     <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
                   </div>
@@ -196,16 +202,16 @@
 
         <div class="row" v-if="cateList3.length">
           <div class="col-lg-12 py-3">
-            <div class="bg-light py-2 px-4 mb-3">
+            <div class="bg-light py-2 px-4title  mb-3">
               <h3 class="m-0">UI设计<a class="look-more" href="./category.html?catid=3">查看更多</a></h3>
             </div>
             <div class="item-ul">
               <div class="item-li" v-for="(item,i) in cateList3" :key="item.id" v-if="i<4">
-                <div class="position-relative">
+                <div class="position-relative d-box-bg">
                   <a :href="'./information.html?id='+item.id">
                     <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
                   </a>
-                  <div class="overlay position-relative bg-light">
+                  <div class="overlay position-relative bg-box">
                     <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
                     <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
                   </div>
@@ -217,16 +223,16 @@
 
         <div class="row" v-if="cateList4.length">
           <div class="col-lg-12 py-3">
-            <div class="bg-light py-2 px-4 mb-3">
+            <div class="bg-light py-2 px-4title  mb-3">
               <h3 class="m-0">APP研发<a class="look-more" href="./category.html?catid=4">查看更多</a></h3>
             </div>
             <div class="item-ul">
               <div class="item-li" v-for="(item,i) in cateList4" :key="item.id" v-if="i<4">
-                <div class="position-relative">
+                <div class="position-relative d-box-bg">
                   <a :href="'./information.html?id='+item.id">
                     <img class="img-fluid w-100 img-cover" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
                   </a>
-                  <div class="overlay position-relative bg-light">
+                  <div class="overlay position-relative bg-box">
                     <div class="mb-2 ft-13">{{item.createTime?.substr(0,10)}}</div>
                     <a class="h4 m-0 link" :href="'./information.html?id='+item.id">{{item.title}}</a>
                   </div>
@@ -237,7 +243,7 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- 底部菜单 -->
   <div id="menu-botom"></div>

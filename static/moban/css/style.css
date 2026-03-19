@@ -40,7 +40,8 @@
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent
@@ -61,14 +62,14 @@ section {
 
 body {
   margin: 0;
-  font-family: roboto, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   /* color: #6c757d; */
   color: #333;
   text-align: left;
-  background-color: #1e1e1e
+  background-color: #f4f4f2
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -635,8 +636,8 @@ pre code {
 .container-lg,
 .container-xl {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  /* padding-right: 15px; */
+  /* padding-left: 15px; */
   margin-right: auto;
   margin-left: auto
 }
@@ -682,8 +683,8 @@ pre code {
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -15px;
-  margin-left: -15px
+  /* margin-right: -15px; */
+  /* margin-left: -15px */
 }
 
 .no-gutters {
@@ -4437,7 +4438,8 @@ input[type=button].btn-block {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: .5rem 1rem
+  padding: .0rem 10rem;
+  height:60px
 }
 
 .navbar .container,
@@ -4479,12 +4481,17 @@ input[type=button].btn-block {
   padding-right: 0;
   padding-left: 0
 }
-
+#menu-botom{
+  background: #333;
+}
 .navbar-nav .dropdown-menu {
   position: static;
   float: none
 }
+.container{
+  background: #fff;
 
+}
 .navbar-text {
   display: inline-block;
   padding-top: .5rem;
@@ -6758,6 +6765,9 @@ button.bg-danger:focus {
 .bg-light {
   background-color: #fff  !important
 }
+.bg-box {
+  background-color: #f3f4f4  !important
+}
 
 a.bg-light:hover,
 a.bg-light:focus,
@@ -6944,9 +6954,21 @@ button.bg-dark:focus {
   padding: 20px;
   border-radius: 14px !important;
 
+  /* background: #fff; */
+}
+.t-flex {
+  text-align: center;
+  padding: 20px 0;
+
   background: #fff;
 }
+.box-flex {
+  display: flex !important;
+  padding: 20px;
+  border-radius: 14px !important;
 
+  background: #f3f4f4;
+}
 .d-inline-flex {
   display: inline-flex !important
 }
@@ -7967,10 +7989,16 @@ button.bg-dark:focus {
 .position-relative {
   padding: 20px;
   position: relative !important;
-  background: #fff;
+  /* background: #fff; */
   border-radius: 14px !important;
 }
-
+.img-box{
+  width:100%;
+  img{
+  width:100%
+    
+  }
+}
 .position-absolute {
   position: absolute !important
 }
@@ -8199,7 +8227,10 @@ button.bg-dark:focus {
 .my-3 {
   margin-bottom: 1rem !important
 }
-
+.mb-3title,
+.my-3 {
+  margin-bottom: 0rem !important
+}
 .ml-3,
 .mx-3 {
   margin-left: 1rem !important
@@ -8307,22 +8338,22 @@ button.bg-dark:focus {
 
 .pt-2,
 .py-2 {
-  padding-top: .5rem !important
+  /* padding-top: .5rem !important */
 }
 
 .pr-2,
 .px-2 {
-  padding-right: .5rem !important
+  /* padding-right: .5rem !important */
 }
 
 .pb-2,
 .py-2 {
-  padding-bottom: .5rem !important
+  /* padding-bottom: .5rem !important */
 }
 
 .pl-2,
 .px-2 {
-  padding-left: .5rem !important
+  /* padding-left: .5rem !important */
 }
 
 .p-3 {
@@ -8375,7 +8406,13 @@ button.bg-dark:focus {
 
   padding-left: 1.5rem !important
 }
-
+.pl-4,
+.px-4title {
+  border-radius:5px;
+  text-align: center;
+  padding-right: 1.5rem !important;
+  padding-left: 6.5rem !important
+}
 .p-5 {
   padding: 3rem !important
 }
@@ -10836,4 +10873,8 @@ h6,
   margin: 0;
   padding: 0;
   list-style-type: none
+}
+
+.box-shadow{
+  box-shadow: 2px 5px 5px #dedede;
 }

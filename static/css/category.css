@@ -491,11 +491,11 @@
   margin: 0;
   background: url(../img/category/location.gif) no-repeat 0 2px;
   padding-left: 23px;
-  color: #fff;
+  color: #333;
 
 }
 .location a {
-  color: #fff
+  color: #333
 }
 .none,
 my_mps {

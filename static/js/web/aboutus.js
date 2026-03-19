@@ -173,7 +173,7 @@ function setAboutus(i) {
       <span>4. 固定用户不得传播、发布国家法律禁止的内容。</span>
     </p>
     <p class="jg-p">
-      <span>本监管措施最终解释权归本<span style="color:#666666;"><span>公司</span></span>所有</span>
+      <span>本监管措施最终解释权归本<span style="color:#333;"><span>公司</span></span>所有</span>
     </p>`,
     // 主题规则
     3: `<p class="jg-p">
@@ -244,18 +244,18 @@ function setAboutus(i) {
     </p>`,
     // 关于我们
     4: `<h1 style="text-align:center;height: 30px;"></h1>
-    <h1 style="text-align:center;font-size:26px;font-weight:700;color:#fff;">
+    <h1 style="text-align:center;font-size:26px;font-weight:700;color:#333;">
       ${webName.title}
     </h1>
     <p>
       <span style="font-size:22px;font-weight:700;"><span
-          style="color:#fff;font-size:16px;background-color:#e9ecef;"><br>
+          style="color:#333;font-size:16px;background-color:#e9ecef;"><br>
         </span></span>
     </p>
-    <p style="font-size:15px;color:#fff;">
+    <p style="font-size:15px;color:#333;">
       ${webName.info}
     </p>
-    <p style="font-size:15px;color:#fff;">
+    <p style="font-size:15px;color:#333;">
       公司环境：
     </p>
     <p>
@@ -267,9 +267,9 @@ function setAboutus(i) {
       
     </p>`,
     // 主题投诉
-    5: `<p style="margin:10px 0 0">
-      <span style="xy-p"><span>${webName.company}（以下简称“${webName.short} ”）</span><br>
-        <span>${webName.short} 原则</span><br>
+    5: `<p style="margin:10px 0 0;color:#333;" class="pAndSpan">
+      <span class="xy-p" ><span>${webName.company}（以下简称“${webName.short} ”）</span><br>
+        <span >${webName.short} 原则</span><br>
         <span>${webName.short} 为了保护用户发布的内容、维护良好的站内环境，${webName.short} 团队和${webName.short} 权的管理员将依据${webName.short} 协议和本规范中的条款对注册${webName.short} 的用户和发布在${webName.short}
           的内容进行管理。采取的措施包括但不限于更改或删除用户发布的内容、暂停或终止用户使用${webName.short} 的权利。</span><br>
         <span>受理范围</span><br>

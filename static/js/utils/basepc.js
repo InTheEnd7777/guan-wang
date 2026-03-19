@@ -103,8 +103,8 @@ function setWebInit() {
 
       WebUrl = "http://www.bm-ft.cn/api"
     } else {
-      WebUrl = "http://bm-ft.cn/api"
-      // WebUrl = ""
+      // WebUrl = "http://bm-ft.cn/api"
+      WebUrl = ""
     }
     // WebSource = "hzbmft"
 

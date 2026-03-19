@@ -1,12 +1,12 @@
 /* 自定义 */
 .sf-span {
-  color: #fff !important;
+  color: #333 !important;
   font-size: 16px !important;
 }
 
 .jg-p {
   font-size: 16px;
-  color: #fff;
+  color: #333;
 }
 
 /* 原样式 */
@@ -80,7 +80,7 @@
 
 .location {
   text-align: left;
-  color: #fff;
+  color: #333;
   width: 1000px;
   margin-left: auto;
   margin-right: auto;
@@ -89,7 +89,7 @@
 }
 
 .location a {
-  color: #fff
+  color: #333
 }
 
 .cinner {
@@ -112,7 +112,7 @@
   display: block;
   height: 26px;
   line-height: 26px;
-  color: #fff;
+  color: #333;
   text-decoration: none;
   font-size: 12px;
   font-family: microsoft yahei;
@@ -152,7 +152,7 @@
 
 .rightcontent span {
   font-size: 14px;
-  color:#fff
+  /* color:#fff */
 }
 
 .footer {

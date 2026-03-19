@@ -29,7 +29,7 @@
               <a href="./index.html" class="navbar-brand d-none d-lg-block">
                 <img :src="webName.logo">
               </a>
-              <div class="collapse navbar-collapse justify-content-between px-0 px-lg-5" id="navbarCollapse">
+              <div class="collapse navbar-collapse justify-content-between px-0 px-lg-5 " id="navbarCollapse" >
                 <div class="navbar-nav ml-auto py-0 ">
                   <a href="./index.html" class="nav-item nav-link">首页</a>
                   <a href="./category.html?catid=1" class="nav-item nav-link">网页搭建</a>
@@ -74,7 +74,7 @@
                 </div>
                 <template v-if="isShow && infoList">
                   <div class="col-lg-6" v-for="(item,i) in infoList" :key="item.id">
-                    <div class="position-relative mb-3">
+                    <div class="position-relative mb-3 box-shadow ">
                       <a :href="'./information.html?id='+item.id">
                         <img class="img-fluid w-100 list-img" :src="item.img[0]||WebErrImg" onerror="imgErr(this)">
                       </a>
