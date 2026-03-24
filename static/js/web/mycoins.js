@@ -127,7 +127,8 @@ let app = new Vue({
             this.orderId = ''
             let param = {
               coinsCounts: this.form.coins,
-              returnUrl: location.href
+              returnUrl: location.href,
+              payType:2,
             }
             loading()
             api.coinsRecharge(param).then(res => {
