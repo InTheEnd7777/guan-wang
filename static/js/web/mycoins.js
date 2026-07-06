@@ -139,12 +139,12 @@ let app = new Vue({
                 orderNo
               } = data
               // 支付宝链接
-              // window.open(payInfo)
+              window.open(payInfo)
               this.orderId = orderNo
               this.getState()
               //生成二维码
-              this.isAlert = true
-              this.codeInit(payInfo)
+              // this.isAlert = true
+              // this.codeInit(payInfo)
             }).catch(err => {
               toast(err)
               //维护时显示对公转账

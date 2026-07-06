@@ -109,6 +109,7 @@ function setWebInit() {
     // WebSource = "hzbmft"
 
     WebUrl2 = ""
+    // WebSource = "default" //自定义的  original
     WebSource = "hzbmft" //自定义的  original
   }
   if (!WebLog) {
@@ -153,6 +154,8 @@ function ajax(obj) {
     'X-Source-From': WebSource
   }
   let token = getToken()
+  // let token = '52e74c00a37a77c86076ae5e074cadad'
+  
   if (token) {
     headers['x-access-token'] = token
   }
